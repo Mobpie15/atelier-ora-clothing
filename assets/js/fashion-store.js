@@ -996,6 +996,44 @@
     });
   }
 
+  // Mobile Navigation Drawer Controller
+  const mobileMenuBtn = document.getElementById('fashion-mobile-menu-btn');
+  const mobileDrawer = document.getElementById('fashion-mobile-drawer');
+  const drawerOverlay = document.getElementById('fashion-drawer-overlay');
+  const drawerCloseBtn = document.getElementById('fashion-drawer-close');
+  const drawerAccountBtn = document.getElementById('drawer-account-btn');
+
+  function openMobileDrawer() {
+    if (mobileDrawer) mobileDrawer.classList.add('open');
+    if (drawerOverlay) drawerOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobileDrawer() {
+    if (mobileDrawer) mobileDrawer.classList.remove('open');
+    if (drawerOverlay) drawerOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileDrawer);
+  if (drawerCloseBtn) drawerCloseBtn.addEventListener('click', closeMobileDrawer);
+  if (drawerOverlay) drawerOverlay.addEventListener('click', closeMobileDrawer);
+
+  if (drawerAccountBtn) {
+    drawerAccountBtn.addEventListener('click', () => {
+      closeMobileDrawer();
+      if (window.openAccountModal) window.openAccountModal('acc-tab-patron');
+    });
+  }
+
+  document.querySelectorAll('.fashion-drawer-link').forEach(link => {
+    if (link !== drawerAccountBtn) {
+      link.addEventListener('click', () => {
+        closeMobileDrawer();
+      });
+    }
+  });
+
   // Initial Run
   updateCartUI();
   applyFacetedFilters();

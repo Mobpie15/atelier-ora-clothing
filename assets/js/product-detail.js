@@ -780,6 +780,19 @@
     if (pdpBtnAddBagPrice) pdpBtnAddBagPrice.textContent = `$${p.price}`;
     if (pdpSummary) pdpSummary.textContent = p.summary;
 
+    // Mobile Quick Header Elements
+    const mobileBadge = document.getElementById('pdp-mobile-badge');
+    const mobileCategory = document.getElementById('pdp-mobile-category-kicker');
+    const mobileTitle = document.getElementById('pdp-mobile-title');
+    const mobilePrice = document.getElementById('pdp-mobile-price');
+    const stickyPrice = document.getElementById('pdp-sticky-price-val');
+
+    if (mobileBadge) mobileBadge.textContent = p.badge;
+    if (mobileCategory) mobileCategory.textContent = `${p.category.toUpperCase()} • ${p.material.toUpperCase()}`;
+    if (mobileTitle) mobileTitle.textContent = p.title;
+    if (mobilePrice) mobilePrice.textContent = `$${p.price} USD`;
+    if (stickyPrice) stickyPrice.textContent = `$${p.price}`;
+
     // Render Colorway Swatches
     renderColorways();
 
@@ -939,16 +952,33 @@
   }
 
   function renderSizes() {
-    if (!pdpSizeSelect) return;
-    pdpSizeSelect.innerHTML = activeProduct.sizes.map(s => `
-      <option value="${s.name}" ${s.name === selectedSize ? 'selected' : ''}>
-        ${s.name} &bull; ${s.fitNote}
-      </option>
-    `).join('');
+    const mobileSizeSelect = document.getElementById('pdp-mobile-size-quick');
 
-    pdpSizeSelect.addEventListener('change', () => {
-      selectedSize = pdpSizeSelect.value;
-    });
+    if (pdpSizeSelect) {
+      pdpSizeSelect.innerHTML = activeProduct.sizes.map(s => `
+        <option value="${s.name}" ${s.name === selectedSize ? 'selected' : ''}>
+          ${s.name} &bull; ${s.fitNote}
+        </option>
+      `).join('');
+
+      pdpSizeSelect.addEventListener('change', () => {
+        selectedSize = pdpSizeSelect.value;
+        if (mobileSizeSelect) mobileSizeSelect.value = selectedSize;
+      });
+    }
+
+    if (mobileSizeSelect) {
+      mobileSizeSelect.innerHTML = activeProduct.sizes.map(s => `
+        <option value="${s.name}" ${s.name === selectedSize ? 'selected' : ''}>
+          SIZE: ${s.name}
+        </option>
+      `).join('');
+
+      mobileSizeSelect.addEventListener('change', () => {
+        selectedSize = mobileSizeSelect.value;
+        if (pdpSizeSelect) pdpSizeSelect.value = selectedSize;
+      });
+    }
   }
 
   function renderCompanionPieces() {
@@ -1144,6 +1174,54 @@
       openCart();
     });
   }
+
+  // Mobile Sticky Quick-Add Button Action
+  const pdpMobileQuickAddBtn = document.getElementById('pdp-mobile-quick-add-btn');
+  if (pdpMobileQuickAddBtn) {
+    pdpMobileQuickAddBtn.addEventListener('click', () => {
+      if (pdpBtnAddBag) {
+        pdpBtnAddBag.click();
+      }
+    });
+  }
+
+  // Mobile Navigation Drawer on PDP
+  const mobileMenuBtn = document.getElementById('fashion-mobile-menu-btn');
+  const mobileDrawer = document.getElementById('fashion-mobile-drawer');
+  const drawerOverlay = document.getElementById('fashion-drawer-overlay');
+  const drawerCloseBtn = document.getElementById('fashion-drawer-close');
+  const drawerAccountBtn = document.getElementById('drawer-account-btn');
+
+  function openMobileDrawer() {
+    if (mobileDrawer) mobileDrawer.classList.add('open');
+    if (drawerOverlay) drawerOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobileDrawer() {
+    if (mobileDrawer) mobileDrawer.classList.remove('open');
+    if (drawerOverlay) drawerOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileDrawer);
+  if (drawerCloseBtn) drawerCloseBtn.addEventListener('click', closeMobileDrawer);
+  if (drawerOverlay) drawerOverlay.addEventListener('click', closeMobileDrawer);
+
+  if (drawerAccountBtn) {
+    drawerAccountBtn.addEventListener('click', () => {
+      closeMobileDrawer();
+      if (window.openAccountModal) window.openAccountModal('acc-tab-patron');
+    });
+  }
+
+  document.querySelectorAll('.fashion-drawer-link').forEach(link => {
+    if (link !== drawerAccountBtn) {
+      link.addEventListener('click', () => {
+        closeMobileDrawer();
+      });
+    }
+  });
 
   // Account Modal
   window.openAccountModal = function (tabId) {
