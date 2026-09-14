@@ -49,6 +49,14 @@
           <span>MOBPIE PORTFOLIO</span>
         </a>
 
+        <button type="button" id="header-account-btn" class="btn-account-header font-mono" aria-label="Patron Account Portal">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span>ACCOUNT</span>
+        </button>
+
         <button type="button" class="btn-bag-header cart-toggle-btn" aria-label="Open Apparel Bag">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
             <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
@@ -243,18 +251,70 @@
         </div>
       </div>
 
+      <!-- Faceted Parametric Filter Toolbar -->
+      <div class="faceted-filter-bar font-mono">
+        <div class="faceted-filter-group">
+          <label for="filter-material" class="faceted-label">MATERIAL PROVENANCE:</label>
+          <select id="filter-material" class="faceted-select font-mono">
+            <option value="all">All Materials (6)</option>
+            <option value="fleece">500 GSM Loopback Fleece</option>
+            <option value="canvas">Washed Cotton Canvas</option>
+            <option value="wool">850 GSM Italian Virgin Wool</option>
+            <option value="jersey">280 GSM Single Jersey</option>
+            <option value="tropical">High-Twist Tropical Wool</option>
+            <option value="suede">Italian Hydro Calf Suede</option>
+          </select>
+        </div>
+
+        <div class="faceted-filter-group">
+          <label for="filter-price" class="faceted-label">PRICE SPECTRUM:</label>
+          <select id="filter-price" class="faceted-select font-mono">
+            <option value="all">All Price Ranges</option>
+            <option value="under300">Under $300</option>
+            <option value="300to500">$300 - $500</option>
+            <option value="over500">Above $500</option>
+          </select>
+        </div>
+
+        <div class="faceted-filter-group">
+          <label for="filter-sort" class="faceted-label">ORDER BY:</label>
+          <select id="filter-sort" class="faceted-select font-mono">
+            <option value="curated">Curated Editorial</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="weight">Fabric Weight (GSM)</option>
+          </select>
+        </div>
+
+        <div class="faceted-results-count">
+          <span id="catalog-count-badge" class="count-pill">SHOWING 6 OF 6 PIECES</span>
+        </div>
+      </div>
+
       <div class="garments-grid">
         <!-- Item 1: Hoodie -->
-        <div class="garment-card" data-category="sweats">
-          <div class="garment-img-frame">
+        <div class="garment-card" data-id="hoodie-01" data-category="sweats" data-material="fleece" data-price="260" data-weight="500">
+          <div class="garment-img-frame" title="Click to view garment specifications">
             <span class="garment-badge-pill font-mono">500 GSM FLEECE</span>
             <img src="assets/images/garment-hoodie-oatmeal.jpg" alt="500 GSM Heavyweight Boxy Hoodie" loading="lazy">
+            <div class="garment-overlay-cue font-mono">
+              <span>VIEW FULL SPECS &amp; PROVENANCE</span>
+            </div>
           </div>
           <div class="garment-info-box">
             <div>
-              <span class="caption-tag font-mono">SWEATS &bull; OATMEAL HEATHER</span>
-              <h3 class="garment-title font-display">500 GSM Heavyweight Boxy Hoodie</h3>
-              <p class="garment-summary">Custom loopback fleece with dropped shoulders and double-layered structured hood.</p>
+              <div class="card-top-meta font-mono">
+                <span class="caption-tag">SWEATS &bull; OATMEAL HEATHER</span>
+                <span class="card-spec-link" onclick="openProductModal('hoodie-01')">SPECS &plus;</span>
+              </div>
+              <h3 class="garment-title font-display" onclick="openProductModal('hoodie-01')">500 GSM Heavyweight Boxy Hoodie</h3>
+              <p class="garment-summary">Custom loopback fleece with dropped shoulders, structured double-layer hood, and zero drawstrings.</p>
+              
+              <div class="card-quick-specs font-mono">
+                <span>100% ORGANIC COTTON</span>
+                <span>&bull;</span>
+                <span>GUIMARÃES, PORTUGAL</span>
+              </div>
             </div>
             <div class="garment-buy-row">
               <div class="size-selector-wrap font-mono">
@@ -275,16 +335,28 @@
         </div>
 
         <!-- Item 2: Bomber Jacket -->
-        <div class="garment-card" data-category="outerwear">
-          <div class="garment-img-frame">
+        <div class="garment-card" data-id="bomber-02" data-category="outerwear" data-material="canvas" data-price="420" data-weight="440">
+          <div class="garment-img-frame" title="Click to view garment specifications">
             <span class="garment-badge-pill font-mono">WASHED CANVAS</span>
             <img src="assets/images/garment-bomber-olive.jpg" alt="Washed Canvas Flight Bomber Jacket" loading="lazy">
+            <div class="garment-overlay-cue font-mono">
+              <span>VIEW FULL SPECS &amp; PROVENANCE</span>
+            </div>
           </div>
           <div class="garment-info-box">
             <div>
-              <span class="caption-tag font-mono">OUTERWEAR &bull; VINTAGE OLIVE</span>
-              <h3 class="garment-title font-display">Washed Canvas Flight Bomber</h3>
+              <div class="card-top-meta font-mono">
+                <span class="caption-tag">OUTERWEAR &bull; VINTAGE OLIVE</span>
+                <span class="card-spec-link" onclick="openProductModal('bomber-02')">SPECS &plus;</span>
+              </div>
+              <h3 class="garment-title font-display" onclick="openProductModal('bomber-02')">Washed Canvas Flight Bomber</h3>
               <p class="garment-summary">Enzyme-washed cotton canvas with brushed silver riri two-way zip and ribbed storm collar.</p>
+              
+              <div class="card-quick-specs font-mono">
+                <span>440 GSM DUCK CANVAS</span>
+                <span>&bull;</span>
+                <span>CUPRO QUILTED</span>
+              </div>
             </div>
             <div class="garment-buy-row">
               <div class="size-selector-wrap font-mono">
@@ -304,16 +376,28 @@
         </div>
 
         <!-- Item 3: Trench Coat -->
-        <div class="garment-card" data-category="outerwear">
-          <div class="garment-img-frame">
+        <div class="garment-card" data-id="trench-03" data-category="outerwear" data-material="wool" data-price="780" data-weight="850">
+          <div class="garment-img-frame" title="Click to view garment specifications">
             <span class="garment-badge-pill font-mono">850 GSM VIRGIN WOOL</span>
             <img src="assets/images/garment-trench-camel.jpg" alt="Double-Breasted Wool Overcoat" loading="lazy">
+            <div class="garment-overlay-cue font-mono">
+              <span>VIEW FULL SPECS &amp; PROVENANCE</span>
+            </div>
           </div>
           <div class="garment-info-box">
             <div>
-              <span class="caption-tag font-mono">OUTERWEAR &bull; WARM CAMEL</span>
-              <h3 class="garment-title font-display">Double-Breasted Wool Overcoat</h3>
+              <div class="card-top-meta font-mono">
+                <span class="caption-tag">OUTERWEAR &bull; WARM CAMEL</span>
+                <span class="card-spec-link" onclick="openProductModal('trench-03')">SPECS &plus;</span>
+              </div>
+              <h3 class="garment-title font-display" onclick="openProductModal('trench-03')">Double-Breasted Wool Overcoat</h3>
               <p class="garment-summary">850 GSM Italian wool melton with architectural wide notched lapels and horn buckle belt.</p>
+              
+              <div class="card-quick-specs font-mono">
+                <span>BIELLA, ITALY</span>
+                <span>&bull;</span>
+                <span>FLOATING CANVAS</span>
+              </div>
             </div>
             <div class="garment-buy-row">
               <div class="size-selector-wrap font-mono">
@@ -333,16 +417,28 @@
         </div>
 
         <!-- Item 4: Boxy Tee -->
-        <div class="garment-card" data-category="tees">
-          <div class="garment-img-frame">
+        <div class="garment-card" data-id="tee-04" data-category="tees" data-material="jersey" data-price="110" data-weight="280">
+          <div class="garment-img-frame" title="Click to view garment specifications">
             <span class="garment-badge-pill font-mono">280 GSM JERSEY</span>
             <img src="assets/images/garment-tee-charcoal.jpg" alt="280 GSM Boxy Drop-Shoulder Tee" loading="lazy">
+            <div class="garment-overlay-cue font-mono">
+              <span>VIEW FULL SPECS &amp; PROVENANCE</span>
+            </div>
           </div>
           <div class="garment-info-box">
             <div>
-              <span class="caption-tag font-mono">TEES &bull; VINTAGE WASHED BLACK</span>
-              <h3 class="garment-title font-display">280 GSM Boxy Drop-Shoulder Tee</h3>
+              <div class="card-top-meta font-mono">
+                <span class="caption-tag">TEES &bull; VINTAGE WASHED BLACK</span>
+                <span class="card-spec-link" onclick="openProductModal('tee-04')">SPECS &plus;</span>
+              </div>
+              <h3 class="garment-title font-display" onclick="openProductModal('tee-04')">280 GSM Boxy Drop-Shoulder Tee</h3>
               <p class="garment-summary">Sun-faded pigment washed heavy cotton single jersey with reinforced 32mm ribbed collar.</p>
+              
+              <div class="card-quick-specs font-mono">
+                <span>PIGMENT WASH</span>
+                <span>&bull;</span>
+                <span>BARCELOS, PORTUGAL</span>
+              </div>
             </div>
             <div class="garment-buy-row">
               <div class="size-selector-wrap font-mono">
@@ -363,16 +459,28 @@
         </div>
 
         <!-- Item 5: Trousers -->
-        <div class="garment-card" data-category="trousers">
-          <div class="garment-img-frame">
+        <div class="garment-card" data-id="trouser-05" data-category="trousers" data-material="tropical" data-price="320" data-weight="310">
+          <div class="garment-img-frame" title="Click to view garment specifications">
             <span class="garment-badge-pill font-mono">TROPICAL WOOL</span>
             <img src="assets/images/garment-trouser-espresso.jpg" alt="Wide-Leg Pleated Tailored Trouser" loading="lazy">
+            <div class="garment-overlay-cue font-mono">
+              <span>VIEW FULL SPECS &amp; PROVENANCE</span>
+            </div>
           </div>
           <div class="garment-info-box">
             <div>
-              <span class="caption-tag font-mono">TAILORING &bull; DEEP ESPRESSO</span>
-              <h3 class="garment-title font-display">Wide-Leg Pleated Tailored Trouser</h3>
+              <div class="card-top-meta font-mono">
+                <span class="caption-tag">TAILORING &bull; DEEP ESPRESSO</span>
+                <span class="card-spec-link" onclick="openProductModal('trouser-05')">SPECS &plus;</span>
+              </div>
+              <h3 class="garment-title font-display" onclick="openProductModal('trouser-05')">Wide-Leg Pleated Tailored Trouser</h3>
               <p class="garment-summary">Heavyweight high-twist wool with deep forward double pleats and straight architectural drape.</p>
+              
+              <div class="card-quick-specs font-mono">
+                <span>HIGH-TWIST WOOL</span>
+                <span>&bull;</span>
+                <span>VARESE, ITALY</span>
+              </div>
             </div>
             <div class="garment-buy-row">
               <div class="size-selector-wrap font-mono">
@@ -393,16 +501,28 @@
         </div>
 
         <!-- Item 6: Chelsea Boots -->
-        <div class="garment-card" data-category="footwear">
-          <div class="garment-img-frame">
+        <div class="garment-card" data-id="boots-06" data-category="footwear" data-material="suede" data-price="450" data-weight="900">
+          <div class="garment-img-frame" title="Click to view garment specifications">
             <span class="garment-badge-pill font-mono">CALF SUEDE</span>
             <img src="assets/images/garment-boots-suede.jpg" alt="Hand-Burnished Suede Chelsea Boots" loading="lazy">
+            <div class="garment-overlay-cue font-mono">
+              <span>VIEW FULL SPECS &amp; PROVENANCE</span>
+            </div>
           </div>
           <div class="garment-info-box">
             <div>
-              <span class="caption-tag font-mono">FOOTWEAR &bull; SAND ALMOND</span>
-              <h3 class="garment-title font-display">Suede Crepe Chelsea Boots</h3>
+              <div class="card-top-meta font-mono">
+                <span class="caption-tag">FOOTWEAR &bull; SAND ALMOND</span>
+                <span class="card-spec-link" onclick="openProductModal('boots-06')">SPECS &plus;</span>
+              </div>
+              <h3 class="garment-title font-display" onclick="openProductModal('boots-06')">Suede Crepe Chelsea Boots</h3>
               <p class="garment-summary">Italian water-repellent calf suede with plantation crepe sole and reinforced double pull tabs.</p>
+              
+              <div class="card-quick-specs font-mono">
+                <span>TUSCAN SUEDE</span>
+                <span>&bull;</span>
+                <span>BLAKE STITCHED</span>
+              </div>
             </div>
             <div class="garment-buy-row">
               <div class="size-selector-wrap font-mono">
@@ -567,6 +687,271 @@
     </div>
   </aside>
 
+  <!-- =========================================================================
+       MODAL 1: PRODUCT SPECIFICATION & QUICK VIEW MODAL
+       ========================================================================= -->
+  <div id="product-detail-modal" class="custom-modal">
+    <div class="modal-dialog product-modal-dialog">
+      <button type="button" id="product-modal-close" class="modal-close-btn" aria-label="Close Product View" onclick="closeProductModal()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div id="product-modal-body" class="product-modal-grid">
+        <!-- Populated dynamically by openProductModal(id) in fashion-store.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 2: PATRON ACCOUNT & BESPOKE FIT PORTAL MODAL
+       ========================================================================= -->
+  <div id="account-portal-modal" class="custom-modal">
+    <div class="modal-dialog account-modal-dialog">
+      <button type="button" id="account-modal-close" class="modal-close-btn" aria-label="Close Account" onclick="closeAccountModal()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      
+      <div class="account-portal-header">
+        <div>
+          <div class="section-kicker font-mono">ATELIER CIRCLE // PATRON PORTAL</div>
+          <h2 class="font-display" style="font-size: 1.85rem; color: #1a1917; margin: 0.25rem 0 0.4rem;">Julian Vance</h2>
+          <span class="font-mono" style="font-size: 0.72rem; color: #7a756c;">PATRON ID: AO-9941-M &bull; REGISTERED STUDIO CLIENT</span>
+        </div>
+        <div class="patron-tier-badge font-mono">
+          <span class="live-dot" style="background: #8c7355;"></span>
+          <span>TIER 01 // FOUNDING PATRON</span>
+        </div>
+      </div>
+
+      <div class="account-nav-tabs font-mono">
+        <button type="button" class="acc-tab-btn active" data-tab="acc-orders" onclick="switchAccountTab('acc-orders')">DISPATCH TELEMETRY</button>
+        <button type="button" class="acc-tab-btn" data-tab="acc-measurements" onclick="switchAccountTab('acc-measurements')">BESPOKE MEASUREMENTS</button>
+        <button type="button" class="acc-tab-btn" data-tab="acc-profile" onclick="switchAccountTab('acc-profile')">PATRON PRIVILEGES</button>
+        <button type="button" class="acc-tab-btn" data-tab="acc-address" onclick="switchAccountTab('acc-address')">WHITE-GLOVE DESTINATION</button>
+      </div>
+
+      <div class="account-tab-contents">
+        <!-- Tab 1: Dispatch Telemetry -->
+        <div id="acc-orders" class="acc-tab-pane active">
+          <div class="active-dispatch-card font-mono">
+            <div class="dispatch-card-header">
+              <div>
+                <span class="dispatch-chip active">IN AIR TRANSIT</span>
+                <span class="dispatch-order-id">ORDER #AO-9412</span>
+              </div>
+              <span class="dispatch-date">DISPATCHED 14 HOURS AGO</span>
+            </div>
+
+            <div class="dispatch-garment-row">
+              <img src="assets/images/garment-hoodie-oatmeal.jpg" alt="500 GSM Boxy Hoodie" class="dispatch-thumb">
+              <div>
+                <h4 class="font-display" style="font-size: 1.15rem; color: #1a1917;">500 GSM Heavyweight Boxy Hoodie</h4>
+                <p style="font-size: 0.78rem; color: #6e6a61; margin-top: 0.2rem;">Color: Oatmeal Heather &bull; Size: L (US 40) &bull; Value: $260 USD</p>
+                <p style="font-size: 0.72rem; color: #8c7355; margin-top: 0.35rem;">Air Waybill: <strong>AWB-LX-994182</strong> &bull; Carrier: Swiss Air Priority Logistics</p>
+              </div>
+            </div>
+
+            <div class="dispatch-progress-track">
+              <div class="track-step done">
+                <span class="step-dot"></span>
+                <span class="step-lbl">ORDER PLACED</span>
+              </div>
+              <div class="track-line done"></div>
+              <div class="track-step done">
+                <span class="step-dot"></span>
+                <span class="step-lbl">MILLED &amp; TAILORED</span>
+              </div>
+              <div class="track-line done"></div>
+              <div class="track-step active">
+                <span class="step-dot"></span>
+                <span class="step-lbl">IN AIR TRANSIT (ZURICH)</span>
+              </div>
+              <div class="track-line"></div>
+              <div class="track-step">
+                <span class="step-dot"></span>
+                <span class="step-lbl">DOORSTEP DELIVERY</span>
+              </div>
+            </div>
+            
+            <div class="dispatch-footer-notice">
+              <span>ESTIMATED DELIVERY: Tomorrow by 2:00 PM (Signature Required)</span>
+            </div>
+          </div>
+
+          <div class="past-orders-list font-mono" style="margin-top: 1.25rem;">
+            <div class="past-order-row">
+              <div class="past-left">
+                <strong>ORDER #AO-8104</strong>
+                <span>Washed Canvas Flight Bomber (Vintage Olive / L)</span>
+              </div>
+              <div class="past-right">
+                <span class="badge-verified">DELIVERED &amp; SIGNED</span>
+                <span>$420 USD &bull; Aug 2026</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Bespoke Sizing & Measurements -->
+        <div id="acc-measurements" class="acc-tab-pane">
+          <div class="measurements-card font-mono">
+            <div class="measure-head">
+              <span class="measure-title">ARCHIVED BODY MEASUREMENTS (JULIAN VANCE)</span>
+              <span class="measure-rec">AUTO SIZING: SIZE L (US 40)</span>
+            </div>
+            <p class="measure-desc font-body">
+              Your bespoke body profile is synchronized with our pattern cutters in Portugal and Italy to ensure an immaculate silhouette across every order.
+            </p>
+
+            <div class="measure-grid">
+              <div class="measure-item">
+                <span class="m-lbl">CHEST CIRCUMFERENCE</span>
+                <span class="m-val">42.0 in (106.7 cm)</span>
+              </div>
+              <div class="measure-item">
+                <span class="m-lbl">SHOULDER BREADTH</span>
+                <span class="m-val">19.2 in (48.8 cm)</span>
+              </div>
+              <div class="measure-item">
+                <span class="m-lbl">SLEEVE LENGTH</span>
+                <span class="m-val">25.5 in (64.8 cm)</span>
+              </div>
+              <div class="measure-item">
+                <span class="m-lbl">NATURAL WAIST</span>
+                <span class="m-val">32.0 in (81.3 cm)</span>
+              </div>
+              <div class="measure-item">
+                <span class="m-lbl">INSEAM LENGTH</span>
+                <span class="m-val">31.5 in (80.0 cm)</span>
+              </div>
+              <div class="measure-item">
+                <span class="m-lbl">FOOT LAST</span>
+                <span class="m-val">EU 42 / US 9 (Standard D)</span>
+              </div>
+            </div>
+
+            <div class="measure-action-row">
+              <button type="button" class="btn-measure-update" onclick="alert('Bespoke measurements verified. No updates required.');">
+                VERIFY MEASUREMENTS
+              </button>
+              <button type="button" class="btn-measure-book font-mono" onclick="alert('Styling consultation request received. Our tailor will contact you via WhatsApp.');">
+                BOOK VIRTUAL FITTING
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: Patron Privileges -->
+        <div id="acc-profile" class="acc-tab-pane">
+          <div class="privileges-grid font-mono">
+            <div class="priv-box">
+              <span class="priv-k">COMPLIMENTARY AIRFREIGHT</span>
+              <span class="priv-v">Zero shipping charges worldwide on all orders regardless of cart value.</span>
+            </div>
+            <div class="priv-box">
+              <span class="priv-k">48-HOUR CAPSULE ALLOCATION</span>
+              <span class="priv-v">Private preview access before new seasonal collections launch publicly.</span>
+            </div>
+            <div class="priv-box">
+              <span class="priv-k">LIFETIME ATELIER REPAIR</span>
+              <span class="priv-v">Complimentary seam reinforcement, hardware replacement, and re-stitching for life.</span>
+            </div>
+            <div class="priv-box">
+              <span class="priv-k">WHATSAPP STYLING HOTLINE</span>
+              <span class="priv-v">Direct line to lead styling concierge (+91 89574 20306) for customized orders.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 4: White-Glove Destination -->
+        <div id="acc-address" class="acc-tab-pane">
+          <div class="address-card font-mono">
+            <div class="addr-badge">PRIMARY ATELIER RESIDENCE</div>
+            <h4 class="font-display" style="font-size: 1.25rem; color: #1a1917; margin: 0.5rem 0 0.25rem;">Julian Vance</h4>
+            <p style="font-size: 0.82rem; color: #5a564e; line-height: 1.6;">
+              Penthouse 14, Oberoi Sky Enclave<br>
+              Barakhamba Road, Connaught Place<br>
+              New Delhi, 110001, India
+            </p>
+            <div class="addr-special font-mono" style="margin-top: 1rem; font-size: 0.72rem; color: #8c7355; background: rgba(140, 115, 85, 0.08); padding: 0.6rem 0.8rem; border-radius: 3px;">
+              COURIER NOTE: Private elevator access. Hand-deliver directly to concierge reception.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 3: ATELIER ORA CONCEPT DEMO DISCLAIMER MODAL
+       ========================================================================= -->
+  <div id="demo-disclaimer-modal" class="custom-modal">
+    <div class="modal-dialog fashion-disclaimer-dialog">
+      <button type="button" id="fashion-disclaimer-close" class="modal-close-btn" aria-label="Close Disclaimer" onclick="dismissFashionDisclaimer()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="fashion-disclaimer-inner">
+        <div class="disclaimer-kicker font-mono">
+          <span class="live-dot" style="background: #8c7355;"></span>
+          <span>CONCEPT DEMO // LUXURY COMMERCE PROTOTYPE</span>
+        </div>
+
+        <h2 class="font-display fashion-disclaimer-heading">Atelier Ora Apparel Studio</h2>
+        <p class="fashion-disclaimer-subhead font-mono">DESIGNED &amp; FULL-STACK ENGINEERED BY MOBPIE</p>
+
+        <div class="fashion-disclaimer-callout font-body">
+          <div class="callout-kicker font-mono">IMPORTANT PORTFOLIO SHOWCASE NOTICE</div>
+          <p>
+            This website is an independent luxury fashion concept prototype engineered by <strong>Mobpie</strong> to demonstrate interactive 3D WebGL garment configuration (Three.js), sub-second headless e-commerce, bespoke sizing telemetry, and contemporary editorial fashion UI design.
+          </p>
+          <p class="callout-sub-warn">
+            <strong>STRICTLY NON-COMMERCIAL:</strong> This is NOT a commercial online clothing shop. No physical garments are sold or dispatched, no credit cards are charged, and no real monetary transactions take place. All catalog products, pricing, and orders are demonstration prototypes.
+          </p>
+        </div>
+
+        <div class="fashion-telemetry-grid font-mono">
+          <div class="tele-box">
+            <span class="t-label">ENGINEER</span>
+            <span class="t-value">Mobpie &bull; Web &amp; 3D Designer</span>
+          </div>
+          <div class="tele-box">
+            <span class="t-label">3D ENGINE</span>
+            <span class="t-value">Three.js WebGL &bull; PBR Shading</span>
+          </div>
+          <div class="tele-box">
+            <span class="t-label">PRODUCTION HOST</span>
+            <span class="t-value">Vercel Global Edge</span>
+          </div>
+          <div class="tele-box">
+            <span class="t-label">DIRECT INQUIRY</span>
+            <span class="t-value">+91 89574 20306</span>
+          </div>
+        </div>
+
+        <div class="fashion-disclaimer-actions font-mono">
+          <button type="button" class="btn-primary-fashion-demo" onclick="dismissFashionDisclaimer()">
+            EXPLORE APPAREL DEMO
+          </button>
+          <a href="https://mobpie-portfolio.vercel.app" target="_blank" class="btn-secondary-fashion-demo">
+            VIEW MOBPIE PORTFOLIO
+          </a>
+          <a href="https://wa.me/918957420306?text=Hi%20Mobpie,%20I%20saw%20your%20Atelier%20Ora%203D%20clothing%20store%20and%20would%20like%20to%20collaborate." target="_blank" class="btn-wa-fashion-demo">
+            WHATSAPP CONSULTATION
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Checkout Concierge Modal -->
   <div id="checkout-modal" class="custom-modal">
     <div class="modal-dialog font-mono">
@@ -622,6 +1007,14 @@
       </svg>
       <span>SHOP</span>
     </a>
+
+    <button type="button" id="mobile-dock-account-btn" class="mobile-dock-btn" aria-label="Patron Account Portal">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+        <circle cx="12" cy="7" r="4"></circle>
+      </svg>
+      <span>ACCOUNT</span>
+    </button>
 
     <button type="button" class="mobile-dock-btn cart-toggle-btn">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
