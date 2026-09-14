@@ -487,6 +487,8 @@
   // DETAILED PRODUCT SPECIFICATION MODAL LOGIC
   // =========================================================================
   window.openProductModal = function (productId) {
+    window.location.href = 'product.html?id=' + encodeURIComponent(productId);
+    return;
     const product = PRODUCTS.find(p => p.id === productId);
     if (!product || !productModal || !productModalBody) return;
 

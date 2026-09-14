@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Garment Specifications // ATELIER ORA APPAREL</title>
+  <meta name="description" content="Dedicated luxury garment specifications, multi-angle editorial lookbook, 360-degree interactive 3D studio, and fabric provenance.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="pdp-body">
+
+  <!-- Top Announcement Bar -->
+  <div class="top-ticker font-mono">
+    <span>COMPLIMENTARY WHITE-GLOVE AIRFREIGHT ON ALL ORDERS &bull; DISPATCHED WITHIN 24 HOURS</span>
+    <span class="ticker-action">
+      <a href="https://mobpie-portfolio.vercel.app" target="_blank">MOBPIE PORTFOLIO</a>
+      <span style="opacity: 0.5;"> // </span>
+      <a href="https://wa.me/918957420306" target="_blank">STYLING CONCIERGE</a>
+    </span>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-wrap">
+        <span class="brand-name font-display">ATELIER ORA</span>
+        <span class="brand-sub font-mono">HEAVYWEIGHT APPAREL &bull; MILAN / NEW YORK</span>
+      </a>
+
+      <nav class="nav-links-group font-mono">
+        <a href="index.html#collection" class="nav-item">&larr; BACK TO COLLECTION</a>
+        <a href="index.html#studio" class="nav-item">3D STUDIO</a>
+        <a href="index.html#provenance" class="nav-item">PROVENANCE</a>
+        <a href="index.html#concierge" class="nav-item">CONCIERGE</a>
+      </nav>
+
+      <div class="header-actions font-mono">
+        <a href="https://mobpie-portfolio.vercel.app" target="_blank" class="btn-portfolio-back" title="Return to Mobpie Designer Portfolio">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+          <span>MOBPIE PORTFOLIO</span>
+        </a>
+
+        <button type="button" id="header-account-btn" class="btn-account-header font-mono" aria-label="Patron Account Portal">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span>ACCOUNT</span>
+        </button>
+
+        <button type="button" class="btn-bag-header cart-toggle-btn" aria-label="Open Apparel Bag">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span>BAG</span>
+          <span class="cart-count-badge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs Bar -->
+  <div class="pdp-breadcrumbs-strip font-mono">
+    <div class="container">
+      <div class="pdp-breadcrumbs-wrap">
+        <a href="index.html" class="crumb-link">ATELIER</a>
+        <span class="crumb-sep">/</span>
+        <a href="index.html#collection" class="crumb-link">AW26 CAPSULE</a>
+        <span class="crumb-sep">/</span>
+        <span id="pdp-breadcrumb-category" class="crumb-current">SWEATS</span>
+        <span class="crumb-sep">/</span>
+        <span id="pdp-breadcrumb-title" class="crumb-current bold">500 GSM HEAVYWEIGHT BOXY HOODIE</span>
+      </div>
+      <a href="index.html#collection" class="crumb-back-btn font-mono">&larr; ALL GARMENTS</a>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MAIN PRODUCT DETAIL SECTION
+       ========================================================================= -->
+  <main class="pdp-main-section">
+    <div class="container">
+      <div class="pdp-layout-grid">
+
+        <!-- ===============================================
+             LEFT COLUMN: MULTI-ANGLE MEDIA & 3D STUDIO
+             =============================================== -->
+        <div class="pdp-visual-col">
+          <!-- Main Display Stage -->
+          <div class="pdp-stage-frame">
+            <img id="pdp-main-image" class="pdp-stage-img" src="assets/images/garment-hoodie-oatmeal.jpg" alt="Garment View">
+            
+            <!-- 3D Interactive WebGL Stage -->
+            <div id="pdp-3d-container" class="pdp-stage-3d" style="display: none;">
+              <div id="three-pdp-viewport" class="three-pdp-viewport"></div>
+              <div class="stage-3d-overlay-bar font-mono">
+                <span class="live-dot" style="background: #2b7a4b;"></span>
+                <span>INTERACTIVE 360&deg; WEBGL ORBIT &bull; DRAG TO ROTATE &bull; PBR LIGHTING</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Multi-Angle & Perspective Selector -->
+          <div class="pdp-angle-gallery-wrap">
+            <div class="angle-gallery-header font-mono">
+              <span class="angle-gallery-title">SELECT PERSPECTIVE &amp; VIEW:</span>
+              <span class="angle-gallery-hint">CLICK ANY VIEW TO INSPECT DETAIL</span>
+            </div>
+            <div id="pdp-angle-thumbnails" class="pdp-thumbnails-grid">
+              <!-- Populated dynamically by product-detail.js -->
+            </div>
+          </div>
+
+          <!-- Craftsmanship Story Card -->
+          <div class="pdp-editorial-craft-card">
+            <div class="craft-card-kicker font-mono">PATENTED TEXTILE DISCIPLINE</div>
+            <h3 class="craft-card-title font-display">Engineered with Architectural Permanence</h3>
+            <p class="craft-card-body">
+              Every garment in the Atelier Ora capsule is developed through iterative sculptural draping. By pairing heavy loopback weights with drop-shoulder geometric block patterns, the fabric holds its architectural silhouette independently without clinging or collapsing.
+            </p>
+            <div class="craft-card-badges font-mono">
+              <span class="craft-badge">&bull; 4-NEEDLE FLATLOCK SEAMS</span>
+              <span class="craft-badge">&bull; NATURAL DYE BATH FIXATION</span>
+              <span class="craft-badge">&bull; GUIMARAES MILLING</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===============================================
+             RIGHT COLUMN: STICKY EDITORIAL DETAILS & SPECS
+             =============================================== -->
+        <div class="pdp-details-col">
+          <div class="pdp-sticky-panel">
+
+            <!-- Category & Badge -->
+            <div class="pdp-header-meta">
+              <span id="pdp-badge" class="pdp-badge-pill font-mono">BESTSELLER // 500 GSM FLEECE</span>
+              <span id="pdp-category-kicker" class="pdp-category-kicker font-mono">SWEATS &bull; 500 GSM LOOPBACK FLEECE</span>
+            </div>
+
+            <!-- Product Title -->
+            <h1 id="pdp-title" class="pdp-title font-display">500 GSM Heavyweight Boxy Hoodie</h1>
+
+            <!-- Price -->
+            <div class="pdp-price-row font-mono">
+              <span id="pdp-price" class="pdp-price-tag">$260 USD</span>
+              <span class="pdp-vat-note">TAXES INCLUDED &bull; COMPLIMENTARY INSURED AIR COURIER</span>
+            </div>
+
+            <!-- Summary Prose -->
+            <p id="pdp-summary" class="pdp-summary font-serif">
+              Engineered from custom-knitted 500 GSM unbrushed loopback cotton fleece. Features architectural dropped shoulders, seamless cuffs, double-layer upright hood without drawstrings, and deep kangaroo pocket.
+            </p>
+
+            <div class="pdp-divider"></div>
+
+            <!-- Colorway Swatches Section -->
+            <div class="pdp-control-group">
+              <div class="control-label-row font-mono">
+                <span class="control-label-title">COLORWAY:</span>
+                <span id="pdp-colorway-label" class="control-label-value">Oatmeal Heather</span>
+              </div>
+              <div id="pdp-colorway-swatches" class="pdp-swatches-row">
+                <!-- Injected by product-detail.js -->
+              </div>
+            </div>
+
+            <!-- Size Selection -->
+            <div class="pdp-control-group">
+              <div class="control-label-row font-mono">
+                <span class="control-label-title">SELECT SIZE:</span>
+                <a href="#pdp-measurements-section" class="pdp-guide-link">EXACT MEASUREMENTS &darr;</a>
+              </div>
+              <select id="pdp-size-select" class="pdp-size-select font-mono" aria-label="Select Size">
+                <!-- Injected by product-detail.js -->
+              </select>
+            </div>
+
+            <!-- Primary Add to Bag CTA -->
+            <div class="pdp-action-block">
+              <button type="button" id="pdp-btn-add-bag" class="pdp-btn-add-bag font-mono">
+                <span class="btn-bag-label">ADD TO APPAREL BAG</span>
+                <span class="btn-bag-sep">&bull;</span>
+                <span id="pdp-btn-add-bag-price" class="btn-bag-price">$260</span>
+              </button>
+
+              <div class="pdp-dispatch-badge font-mono">
+                <span class="live-dot" style="background: #2b7a4b;"></span>
+                <span>IN STOCK &bull; SHIPS WITHIN 24 HOURS VIA INSURED AIRFREIGHT</span>
+              </div>
+            </div>
+
+            <!-- Specs Matrix Strip -->
+            <div class="pdp-specs-matrix-wrap">
+              <div class="specs-matrix-head font-mono">CORE SPECIFICATION MATRIX</div>
+              <div id="pdp-specs-grid" class="pdp-specs-grid">
+                <!-- Injected by product-detail.js -->
+              </div>
+            </div>
+
+            <!-- Detailed Editorial Accordion Sections -->
+            <div class="pdp-editorial-sections">
+
+              <!-- Section 1: Provenance -->
+              <div class="pdp-spec-section">
+                <div class="spec-section-header font-mono">01 // TEXTILE PROVENANCE &amp; METHODOLOGY</div>
+                <div id="pdp-provenance-text" class="spec-section-body">
+                  Milled &amp; knit in Guimaraes, Northern Portugal. Garment-dyed with low-impact botanical reactive pigments.
+                </div>
+              </div>
+
+              <!-- Section 2: Silhouette & Cut -->
+              <div class="pdp-spec-section">
+                <div class="spec-section-header font-mono">02 // SILHOUETTE &amp; PATTERN CUTTING</div>
+                <div id="pdp-silhouette-text" class="spec-section-body">
+                  Architectural boxy cut with relaxed dropped shoulders, seamless 2x2 rib cuffs, and a self-lined double-layer structured hood that stays upright without drawstrings.
+                </div>
+              </div>
+
+              <!-- Section 3: Occasion & Styling -->
+              <div class="pdp-spec-section">
+                <div class="spec-section-header font-mono">03 // OCCASION &amp; STYLING NOTES</div>
+                <div id="pdp-occasion-text" class="spec-section-body">
+                  Essential everyday architectural uniform, gallery exhibitions, trans-continental travel, and relaxed cool-weather layering.
+                </div>
+                <div class="spec-pairing-note font-mono">
+                  <span class="pairing-title">CURATED COMPANION:</span>
+                  <span id="pdp-pairing-text">Pairs effortlessly with Wide-Leg Pleated Tailored Trousers.</span>
+                </div>
+              </div>
+
+              <!-- Section 4: Sizing Table & Measurements -->
+              <div id="pdp-measurements-section" class="pdp-spec-section">
+                <div class="spec-section-header font-mono">04 // SIZING &amp; EXACT MEASUREMENTS</div>
+                <div id="pdp-fit-advice-text" class="spec-fit-advice font-mono">
+                  True to size for the signature architectural boxy drape. Size down if you prefer a traditional tailored fit.
+                </div>
+                <div class="pdp-table-wrap">
+                  <table class="pdp-measurements-table font-mono">
+                    <thead>
+                      <tr>
+                        <th>SIZE</th>
+                        <th>CHEST / WAIST</th>
+                        <th>BODY LENGTH</th>
+                        <th>SHOULDER</th>
+                        <th>SLEEVE</th>
+                      </tr>
+                    </thead>
+                    <tbody id="pdp-measurements-table-body">
+                      <!-- Injected by product-detail.js -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Section 5: Dispatch & Courier -->
+              <div class="pdp-spec-section">
+                <div class="spec-section-header font-mono">05 // WHITE-GLOVE DISPATCH &amp; PACKAGING</div>
+                <div id="pdp-dispatch-text" class="spec-section-body font-mono">
+                  In stock. Hand-inspected and dispatched within 24 hours via white-glove insured airfreight. Estimated worldwide delivery: 2-3 business days.
+                </div>
+              </div>
+
+              <!-- Section 6: Care & Longevity -->
+              <div class="pdp-spec-section">
+                <div class="spec-section-header font-mono">06 // LONGEVITY &amp; CARE PROTOCOL</div>
+                <div id="pdp-care-text" class="spec-section-body font-mono">
+                  Machine wash cold at 30&deg;C inside out with mild neutral detergent. Reshape while damp and dry flat in shade. Do not tumble dry. Low iron if required.
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- =========================================================================
+       SECTION: COMPLETE THE LOOK // RECOMMENDED COMPANION PIECES
+       ========================================================================= -->
+  <section class="pdp-companion-section">
+    <div class="container">
+      <div class="companion-header">
+        <div>
+          <span class="section-kicker font-mono">COMPLETE THE LOOK // ARCHITECTURAL UNIFORM</span>
+          <h2 class="companion-title font-display">Recommended Companion Pieces</h2>
+        </div>
+        <a href="index.html#collection" class="companion-catalog-link font-mono">VIEW FULL CAPSULE &rarr;</a>
+      </div>
+
+      <div id="pdp-related-grid" class="related-garments-grid">
+        <!-- Injected dynamically by product-detail.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       SITE FOOTER
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid font-mono">
+        <div>
+          <div class="footer-brand-title font-display">ATELIER ORA</div>
+          <p class="footer-desc">Heavyweight fleece, tailored outerwear, and contemporary apparel essentials. Designed and engineered by Mobpie.</p>
+          <div style="font-size: 0.72rem; color: #6bb382; margin-top: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span class="live-dot" style="background: #6bb382;"></span>
+            <span>LIVE SERVER ACTIVE ON PORT 5175</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">COLLECTION</div>
+          <ul class="footer-links-list">
+            <li><a href="product.html?id=hoodie-01">500 GSM Heavyweight Hoodie</a></li>
+            <li><a href="product.html?id=bomber-02">Canvas Flight Bomber</a></li>
+            <li><a href="product.html?id=trench-03">Double-Breasted Trench</a></li>
+            <li><a href="product.html?id=trouser-05">Tailored Pleated Trouser</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">STUDIO</div>
+          <ul class="footer-links-list">
+            <li><a href="index.html#studio">3D Garment Studio</a></li>
+            <li><a href="index.html#provenance">Fabric Provenance</a></li>
+            <li><a href="index.html#concierge">Sizing Concierge</a></li>
+            <li><a href="https://wa.me/918957420306" target="_blank">Direct WhatsApp</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">NETWORK</div>
+          <ul class="footer-links-list">
+            <li><a href="https://mobpie-portfolio.vercel.app" target="_blank">Mobpie Flagship Portfolio</a></li>
+            <li><a href="https://amazon-redesign-five.vercel.app" target="_blank">Amazon Atelier Edition</a></li>
+            <li><a href="mailto:mobpiexd@gmail.com">mobpiexd@gmail.com</a></li>
+            <li><a href="tel:+918957420306">+91 89574 20306</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-row font-mono">
+        <span>&copy; 2026 ATELIER ORA APPAREL. ALL RIGHTS RESERVED.</span>
+        <span>ENGINEERED BY MOBPIE &bull; INDEPENDENT WEBSITE DESIGNER INDIA</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       SLIDE-OVER APPAREL BAG DRAWER
+       ========================================================================= -->
+  <div id="cart-overlay" class="cart-overlay"></div>
+  <aside id="cart-drawer" class="cart-drawer">
+    <div class="cart-header">
+      <div class="cart-title font-display">Your Apparel Bag</div>
+      <button type="button" id="cart-close-btn" class="btn-cart-close" aria-label="Close Bag">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div id="cart-items-container" class="cart-items-container">
+      <!-- Injected by product-detail.js -->
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-subtotal-row font-mono">
+        <span>SUBTOTAL:</span>
+        <span id="cart-subtotal" style="font-weight: 700; font-size: 1.15rem;">$0</span>
+      </div>
+      <div class="font-mono" style="font-size: 0.68rem; color: var(--text-muted);">
+        &bull; Complimentary White-Glove Insured Air Delivery Included
+      </div>
+      <button type="button" id="btn-checkout" class="btn-checkout-drawer font-mono" onclick="alert('Proceeding to Atelier Ora Concierge Checkout. All demo items are complimentary.');">
+        <span>PROCEED TO CONCIERGE CHECKOUT</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       PATRON ACCOUNT &amp; BESPOKE FIT PORTAL MODAL
+       ========================================================================= -->
+  <div id="account-portal-modal" class="custom-modal">
+    <div class="modal-dialog account-modal-dialog">
+      <button type="button" id="account-modal-close" class="modal-close-btn" aria-label="Close Account" onclick="window.closeAccountModal()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      
+      <div class="account-portal-header">
+        <div>
+          <div class="section-kicker font-mono">ATELIER CIRCLE // PATRON PORTAL</div>
+          <h2 class="font-display" style="font-size: 1.85rem; color: #1a1917; margin: 0.25rem 0 0.4rem;">Julian Vance</h2>
+          <span class="font-mono" style="font-size: 0.72rem; color: #7a756c;">PATRON ID: AO-9941-M &bull; REGISTERED STUDIO CLIENT</span>
+        </div>
+        <div class="patron-tier-badge font-mono">
+          <span class="live-dot" style="background: #8c7355;"></span>
+          <span>TIER 01 // FOUNDING PATRON</span>
+        </div>
+      </div>
+
+      <div class="account-nav-tabs font-mono">
+        <button type="button" class="acc-tab-btn active" data-tab="acc-orders" onclick="window.switchAccountTab('acc-orders')">DISPATCH TELEMETRY</button>
+        <button type="button" class="acc-tab-btn" data-tab="acc-measurements" onclick="window.switchAccountTab('acc-measurements')">BESPOKE MEASUREMENTS</button>
+        <button type="button" class="acc-tab-btn" data-tab="acc-profile" onclick="window.switchAccountTab('acc-profile')">PATRON PRIVILEGES</button>
+        <button type="button" class="acc-tab-btn" data-tab="acc-address" onclick="window.switchAccountTab('acc-address')">WHITE-GLOVE DESTINATION</button>
+      </div>
+
+      <div class="account-tab-contents">
+        <!-- Tab 1: Dispatch Telemetry -->
+        <div id="acc-orders" class="acc-tab-pane active">
+          <div class="active-dispatch-card font-mono">
+            <div class="dispatch-card-header">
+              <div>
+                <span class="dispatch-chip active">IN AIR TRANSIT</span>
+                <span class="dispatch-order-id">ORDER #AO-9412</span>
+              </div>
+              <span class="dispatch-date">DISPATCHED 14 HOURS AGO</span>
+            </div>
+
+            <div class="dispatch-garment-row">
+              <img src="assets/images/garment-hoodie-oatmeal.jpg" alt="500 GSM Heavyweight Boxy Hoodie" class="dispatch-thumb">
+              <div class="dispatch-info">
+                <div class="dispatch-garment-title font-display">500 GSM Heavyweight Boxy Hoodie</div>
+                <div class="dispatch-meta">COLORWAY: OATMEAL HEATHER &bull; SIZE: L (US 40)</div>
+                <div class="dispatch-route">ORIGIN: GUIMARAES, PORTUGAL &rarr; TRANSIT: LEIPZIG HUB &rarr; DEST: NEW DELHI</div>
+              </div>
+              <div class="dispatch-val">$260</div>
+            </div>
+
+            <div class="dispatch-garment-row">
+              <img src="assets/images/garment-trouser-espresso.jpg" alt="Wide-Leg Pleated Tailored Trouser" class="dispatch-thumb">
+              <div class="dispatch-info">
+                <div class="dispatch-garment-title font-display">Wide-Leg Pleated Tailored Trouser</div>
+                <div class="dispatch-meta">COLORWAY: DEEP ESPRESSO &bull; SIZE: 32 (M)</div>
+                <div class="dispatch-route">ORIGIN: VARESE, ITALY &rarr; TRANSIT: FRANKFURT &rarr; DEST: NEW DELHI</div>
+              </div>
+              <div class="dispatch-val">$320</div>
+            </div>
+
+            <div class="dispatch-progress-track">
+              <div class="track-bar">
+                <div class="track-fill" style="width: 72%;"></div>
+              </div>
+              <div class="track-steps font-mono">
+                <span class="step done">PORTUGAL ATELIER</span>
+                <span class="step done">CUSTOMS CLEARED</span>
+                <span class="step current">IN AIR FREIGHT</span>
+                <span class="step">CONCIERGE DELIVERY</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Bespoke Measurements -->
+        <div id="acc-measurements" class="acc-tab-pane">
+          <div class="measurements-card font-mono">
+            <div class="measure-head">
+              <span class="measure-title">ARCHIVED BODY MEASUREMENTS (JULIAN VANCE)</span>
+              <span class="measure-rec">AUTO SIZING: SIZE L (US 40)</span>
+            </div>
+            <p class="measure-desc">
+              Your bespoke body profile is synchronized with our pattern cutters in Portugal and Italy to ensure an immaculate silhouette across every order.
+            </p>
+
+            <div class="measure-grid">
+              <div class="measure-item">
+                <span class="m-lbl">CHEST CIRCUMFERENCE</span>
+                <span class="m-val">42.0 in (106.7 cm)</span>
+              </div>
+              <div class="measure-item">
+                <span class="m-lbl">SHOULDER BREADTH</span>
+                <span class="m-val">19.2 in (48.8 cm)</span>
+              </div>
+              <div class="measure-item">
+                <span class="m-lbl">SLEEVE LENGTH</span>
+                <span class="m-val">25.5 in (64.8 cm)</span>
+              </div>
+              <div class="measure-item">
+                <span class="m-lbl">NATURAL WAIST</span>
+                <span class="m-val">32.0 in (81.3 cm)</span>
+              </div>
+              <div class="measure-item">
+                <span class="m-lbl">INSEAM LENGTH</span>
+                <span class="m-val">31.5 in (80.0 cm)</span>
+              </div>
+              <div class="measure-item">
+                <span class="m-lbl">FOOT LAST</span>
+                <span class="m-val">EU 42 / US 9 (Standard D)</span>
+              </div>
+            </div>
+
+            <div class="measure-action-row">
+              <button type="button" class="btn-measure-update" onclick="alert('Bespoke measurements verified. No updates required.');">
+                VERIFY MEASUREMENTS
+              </button>
+              <button type="button" class="btn-measure-book font-mono" onclick="alert('Styling consultation request received. Our tailor will contact you via WhatsApp.');">
+                BOOK VIRTUAL FITTING
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: Patron Privileges -->
+        <div id="acc-profile" class="acc-tab-pane">
+          <div class="privileges-grid font-mono">
+            <div class="priv-box">
+              <span class="priv-k">COMPLIMENTARY AIRFREIGHT</span>
+              <span class="priv-v">Zero shipping charges worldwide on all orders regardless of cart value.</span>
+            </div>
+            <div class="priv-box">
+              <span class="priv-k">48-HOUR CAPSULE ALLOCATION</span>
+              <span class="priv-v">Private preview access before new seasonal collections launch publicly.</span>
+            </div>
+            <div class="priv-box">
+              <span class="priv-k">LIFETIME ATELIER REPAIR</span>
+              <span class="priv-v">Complimentary seam reinforcement, hardware replacement, and re-stitching for life.</span>
+            </div>
+            <div class="priv-box">
+              <span class="priv-k">WHATSAPP STYLING HOTLINE</span>
+              <span class="priv-v">Direct line to lead styling concierge (+91 89574 20306) for customized orders.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 4: White-Glove Destination -->
+        <div id="acc-address" class="acc-tab-pane">
+          <div class="address-card font-mono">
+            <div class="addr-badge">PRIMARY ATELIER RESIDENCE</div>
+            <h4 class="font-display" style="font-size: 1.25rem; color: #1a1917; margin: 0.5rem 0 0.25rem;">Julian Vance</h4>
+            <p style="font-size: 0.82rem; color: #5a564e; line-height: 1.6;">
+              Penthouse 14, Oberoi Sky Enclave<br>
+              Barakhamba Road, Connaught Place<br>
+              New Delhi, 110001, India
+            </p>
+            <div class="addr-special font-mono" style="margin-top: 1rem; font-size: 0.72rem; color: #8c7355; background: rgba(140, 115, 85, 0.08); padding: 0.6rem 0.8rem; border-radius: 3px;">
+              COURIER NOTE: Private elevator access. Hand-deliver directly to concierge reception.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       ATELIER ORA CONCEPT DEMO DISCLAIMER MODAL
+       ========================================================================= -->
+  <div id="demo-disclaimer-modal" class="custom-modal">
+    <div class="modal-dialog fashion-disclaimer-dialog">
+      <button type="button" id="fashion-disclaimer-close" class="modal-close-btn" aria-label="Close Disclaimer" onclick="window.dismissFashionDisclaimer()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="fashion-disclaimer-inner">
+        <div class="disclaimer-kicker font-mono">
+          <span class="live-dot" style="background: #8c7355;"></span>
+          <span>CONCEPT DEMO // LUXURY COMMERCE PROTOTYPE</span>
+        </div>
+
+        <h2 class="font-display fashion-disclaimer-heading">Atelier Ora Apparel Studio</h2>
+        <p class="fashion-disclaimer-subhead font-mono">DESIGNED &amp; FULL-STACK ENGINEERED BY MOBPIE</p>
+
+        <div class="fashion-disclaimer-callout font-body">
+          <div class="callout-kicker font-mono">IMPORTANT PORTFOLIO SHOWCASE NOTICE</div>
+          <p>
+            This website is an independent luxury fashion concept prototype engineered by <strong>Mobpie</strong> to demonstrate interactive 3D WebGL garment configuration (Three.js), sub-second headless e-commerce, bespoke sizing telemetry, and contemporary editorial fashion UI design.
+          </p>
+          <p class="callout-sub-warn">
+            <strong>STRICTLY NON-COMMERCIAL:</strong> This is NOT a commercial online clothing shop. No physical garments are sold or dispatched, no credit cards are charged, and no real monetary transactions take place. All catalog products, pricing, and orders are demonstration prototypes.
+          </p>
+        </div>
+
+        <div class="fashion-telemetry-grid font-mono">
+          <div class="tele-box">
+            <span class="t-label">ENGINEER</span>
+            <span class="t-value">Mobpie &bull; Web &amp; 3D Designer</span>
+          </div>
+          <div class="tele-box">
+            <span class="t-label">3D ENGINE</span>
+            <span class="t-value">Three.js WebGL &bull; PBR Shading</span>
+          </div>
+          <div class="tele-box">
+            <span class="t-label">PRODUCTION HOST</span>
+            <span class="t-value">Vercel Global Edge</span>
+          </div>
+          <div class="tele-box">
+            <span class="t-label">DIRECT INQUIRY</span>
+            <span class="t-value">+91 89574 20306</span>
+          </div>
+        </div>
+
+        <div class="fashion-disclaimer-actions font-mono">
+          <button type="button" class="btn-primary-fashion-demo" onclick="window.dismissFashionDisclaimer()">
+            EXPLORE APPAREL DEMO
+          </button>
+          <a href="https://mobpie-portfolio.vercel.app" target="_blank" class="btn-secondary-fashion-demo">
+            VIEW MOBPIE PORTFOLIO
+          </a>
+          <a href="https://wa.me/918957420306?text=Hi%20Mobpie,%20I%20saw%20your%20Atelier%20Ora%203D%20clothing%20store%20and%20would%20like%20to%20collaborate." target="_blank" class="btn-wa-fashion-demo">
+            WHATSAPP CONSULTATION
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/three.min.js"></script>
+  <script src="assets/js/GLTFLoader.js"></script>
+  <script src="assets/js/product-detail.js"></script>
+
+</body>
+</html>
