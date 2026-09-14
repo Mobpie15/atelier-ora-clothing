@@ -1402,6 +1402,24 @@ button, input, select, textarea {
     padding: 0.85rem 1rem;
   }
 
+  .header-actions {
+    gap: 0.45rem;
+  }
+
+  .btn-portfolio-back span,
+  .btn-account-header span {
+    display: none;
+  }
+
+  .btn-portfolio-back,
+  .btn-account-header {
+    padding: 0.5rem 0.65rem;
+  }
+
+  .btn-bag-header {
+    padding: 0.5rem 0.75rem;
+  }
+
   .brand-sub {
     display: none;
   }
@@ -3323,16 +3341,134 @@ button, input, select, textarea {
 }
 
 @media (max-width: 640px) {
+  .pdp-main-section {
+    padding: 1.25rem 0 3rem;
+  }
+  .pdp-breadcrumbs-strip .container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+  .crumb-current.bold {
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: bottom;
+  }
+  .pdp-stage-frame {
+    aspect-ratio: 1 / 1;
+    border-radius: 4px;
+  }
+  .pdp-angle-gallery-wrap {
+    padding: 0.75rem;
+  }
   .pdp-thumbnails-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+  .pdp-thumb-card {
+    padding: 0.35rem;
+  }
+  .thumb-title {
+    font-size: 0.58rem;
+  }
+  .pdp-editorial-craft-card {
+    padding: 1.25rem 1rem;
   }
   .pdp-specs-grid {
     grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+  .pdp-spec-card {
+    padding: 0.75rem 0.85rem;
+  }
+  .pdp-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .pdp-measurements-table {
+    min-width: 440px;
   }
   .related-garments-grid {
     grid-template-columns: 1fr;
   }
   .pdp-title {
-    font-size: 1.85rem;
+    font-size: 1.7rem;
+    line-height: 1.2;
+  }
+  .custom-modal {
+    padding: 0.5rem;
+  }
+  .custom-modal .modal-dialog,
+  .account-modal-dialog,
+  .fashion-disclaimer-dialog {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 1.25rem 0.85rem !important;
+    margin: auto !important;
+  }
+  .account-nav-tabs {
+    display: flex;
+    overflow-x: auto;
+    flex-wrap: nowrap !important;
+    -webkit-overflow-scrolling: touch;
+    gap: 0.35rem;
+    padding-bottom: 0.4rem;
+    scrollbar-width: none;
+  }
+  .account-nav-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .acc-tab-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-size: 0.65rem !important;
+    padding: 0.45rem 0.65rem !important;
+  }
+  .measure-grid,
+  .privileges-grid,
+  .fashion-telemetry-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.5rem !important;
+  }
+  .tele-box {
+    padding: 0.55rem 0.75rem !important;
   }
 }
+
+@media (max-width: 480px) {
+  .hero-headline {
+    font-size: 1.95rem;
+  }
+  .hero-specs-strip {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  .spec-item {
+    border-right: none;
+    border-bottom: 1px solid var(--border-dim);
+    padding-bottom: 0.5rem;
+  }
+  .spec-item:last-child {
+    border-bottom: none;
+  }
+  .pdp-colorways-wrap {
+    gap: 0.4rem;
+  }
+  .pdp-color-swatch-btn {
+    width: 32px;
+    height: 32px;
+  }
+  .pdp-measurements-table th,
+  .pdp-measurements-table td {
+    padding: 0.5rem 0.55rem;
+    font-size: 0.65rem;
+  }
+}
+

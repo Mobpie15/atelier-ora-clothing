@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>ATELIER ORA // ENTERPRISE ERP &amp; OPERATIONS SUITE</title>
+  <meta name="description" content="Back-office enterprise operations console for Atelier Ora. Inventory, staff attendance, payroll, P&L, taxes, and order fulfillment.">
+  <link rel="stylesheet" href="assets/css/admin.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+
+  <!-- Executive Header -->
+  <header class="admin-header">
+    <div class="admin-header-inner">
+      <div class="admin-brand-wrap">
+        <a href="index.html" class="admin-brand-logo">ATELIER ORA</a>
+        <span class="admin-badge-erp">ENTERPRISE OPERATIONS ERP</span>
+      </div>
+
+      <div class="admin-header-center">
+        <div class="live-ist-clock">
+          <span class="clock-dot"></span>
+          <span id="ist-clock-time">--:--:-- IST</span>
+        </div>
+        <span>&bull;</span>
+        <span>ATELIER HQ: MILAN // NEW DELHI</span>
+      </div>
+
+      <div class="admin-header-actions">
+        <div class="role-pill">
+          <span>ROLE:</span>
+          <select class="role-select" aria-label="Executive Role">
+            <option value="owner" selected>Mobpie (Owner &amp; Director)</option>
+            <option value="manager">Studio Operations Manager</option>
+            <option value="accountant">Financial Comptroller</option>
+          </select>
+        </div>
+
+        <a href="index.html" class="btn-store-switch" title="Switch to Public Customer Store">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+          <span>PATRON STORE</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main ERP Container -->
+  <main class="admin-main-container">
+
+    <!-- Top Navigation Tabs Bar -->
+    <nav class="admin-tabs-nav font-mono">
+      <button type="button" class="admin-tab-btn active" data-tab="tab-dashboard">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="7" height="7"></rect>
+          <rect x="14" y="3" width="7" height="7"></rect>
+          <rect x="14" y="14" width="7" height="7"></rect>
+          <rect x="3" y="14" width="7" height="7"></rect>
+        </svg>
+        <span>OVERVIEW &amp; KPIS</span>
+      </button>
+
+      <button type="button" class="admin-tab-btn" data-tab="tab-inventory">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        <span>INVENTORY &amp; PRODUCTS</span>
+      </button>
+
+      <button type="button" class="admin-tab-btn" data-tab="tab-orders">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line>
+          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+          <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+          <line x1="12" y1="22.08" x2="12" y2="12"></line>
+        </svg>
+        <span>ORDERS &amp; DISPATCH</span>
+      </button>
+
+      <button type="button" class="admin-tab-btn" data-tab="tab-attendance">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+          <circle cx="9" cy="7" r="4"></circle>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+        </svg>
+        <span>STAFF ATTENDANCE</span>
+      </button>
+
+      <button type="button" class="admin-tab-btn" data-tab="tab-payroll">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+          <line x1="2" y1="10" x2="22" y2="10"></line>
+        </svg>
+        <span>STAFF SALARY &amp; PAYROLL</span>
+      </button>
+
+      <button type="button" class="admin-tab-btn" data-tab="tab-finances">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="12" y1="1" x2="12" y2="23"></line>
+          <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+        </svg>
+        <span>FINANCIALS, TAXES &amp; P&amp;L</span>
+      </button>
+    </nav>
+
+    <!-- TAB 1: EXECUTIVE DASHBOARD -->
+    <section id="tab-dashboard" class="admin-tab-pane active">
+      <!-- KPI Stats Grid -->
+      <div class="kpi-grid">
+        <div class="kpi-card emerald">
+          <div class="kpi-top-row">
+            <span class="kpi-label">GROSS SALES REVENUE</span>
+            <span class="kpi-icon">&#9650;</span>
+          </div>
+          <div id="kpi-revenue" class="kpi-value">$2,340</div>
+          <div class="kpi-sub positive">+18.4% vs last cycle</div>
+        </div>
+
+        <div class="kpi-card blue">
+          <div class="kpi-top-row">
+            <span class="kpi-label">ACTIVE ORDERS</span>
+            <span class="kpi-icon">&#9679;</span>
+          </div>
+          <div id="kpi-orders" class="kpi-value">2</div>
+          <div class="kpi-sub">White-Glove Courier Transit</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-top-row">
+            <span class="kpi-label">STAFF ON DUTY TODAY</span>
+            <span class="kpi-icon">&#10003;</span>
+          </div>
+          <div id="kpi-attendance" class="kpi-value">5 / 5</div>
+          <div class="kpi-sub positive">100% Attendance Roster</div>
+        </div>
+
+        <div class="kpi-card amber">
+          <div class="kpi-top-row">
+            <span class="kpi-label">NET PROFIT MARGIN</span>
+            <span class="kpi-icon">%</span>
+          </div>
+          <div id="kpi-margin" class="kpi-value">34.2%</div>
+          <div class="kpi-sub positive">Healthy Luxury Unit Economics</div>
+        </div>
+
+        <div class="kpi-card rose">
+          <div class="kpi-top-row">
+            <span class="kpi-label">ESTIMATED TAX LIABILITY</span>
+            <span class="kpi-icon">&#9878;</span>
+          </div>
+          <div id="kpi-tax" class="kpi-value">$421</div>
+          <div class="kpi-sub warning">18% Luxury GST Standard</div>
+        </div>
+      </div>
+
+      <!-- Split Grid: Recent Orders & Inventory Alerts -->
+      <div class="dashboard-split-grid">
+        <!-- Recent Orders Panel -->
+        <div class="admin-panel">
+          <div class="panel-header">
+            <div class="panel-title-wrap">
+              <h3>Recent Client Transactions</h3>
+              <p class="panel-subtitle">LIVE DISPATCH &amp; COMMERCE TELEMETRY</p>
+            </div>
+            <button type="button" class="btn-admin-secondary font-mono" onclick="window.switchAdminTab('tab-orders')">
+              VIEW ALL ORDERS &rarr;
+            </button>
+          </div>
+
+          <div class="table-responsive-wrapper">
+            <table class="admin-data-table">
+              <thead>
+                <tr>
+                  <th>ORDER ID</th>
+                  <th>CLIENT</th>
+                  <th>GARMENTS</th>
+                  <th>TOTAL</th>
+                  <th>STATUS</th>
+                </tr>
+              </thead>
+              <tbody id="dashboard-recent-orders-table">
+                <!-- Populated dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Inventory Stock Alerts Panel -->
+        <div class="admin-panel">
+          <div class="panel-header">
+            <div class="panel-title-wrap">
+              <h3>Inventory Stock Monitor</h3>
+              <p class="panel-subtitle">FABRIC &amp; GARMENT RESERVES</p>
+            </div>
+            <button type="button" class="btn-admin-secondary font-mono" onclick="window.switchAdminTab('tab-inventory')">
+              MANAGE &rarr;
+            </button>
+          </div>
+
+          <div class="table-responsive-wrapper">
+            <table class="admin-data-table">
+              <thead>
+                <tr>
+                  <th>PIECE</th>
+                  <th>CATEGORY</th>
+                  <th>STOCK</th>
+                  <th>STATUS</th>
+                </tr>
+              </thead>
+              <tbody id="dashboard-top-inventory-table">
+                <!-- Populated dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: INVENTORY & PRODUCT CATALOG MANAGEMENT -->
+    <section id="tab-inventory" class="admin-tab-pane">
+      <div class="admin-panel">
+        <div class="panel-header">
+          <div class="panel-title-wrap">
+            <h3>Enterprise Product Catalog &amp; Stock Levels</h3>
+            <p class="panel-subtitle">MANAGE LIVE PRODUCTION SKUS &bull; SYNCED WITH PUBLIC STOREFRONT</p>
+          </div>
+
+          <button type="button" class="btn-admin-primary font-mono" onclick="window.openAddProductModal()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            <span>ADD NEW GARMENT SKU</span>
+          </button>
+        </div>
+
+        <div class="table-responsive-wrapper">
+          <table class="admin-data-table">
+            <thead>
+              <tr>
+                <th>GARMENT &amp; SKU</th>
+                <th>CATEGORY</th>
+                <th>RETAIL PRICE</th>
+                <th>UNIT COGS</th>
+                <th>STOCK COUNT</th>
+                <th>HEALTH</th>
+                <th>ACTIONS</th>
+              </tr>
+            </thead>
+            <tbody id="inventory-table-body">
+              <!-- Populated dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: ORDERS & FULFILLMENT -->
+    <section id="tab-orders" class="admin-tab-pane">
+      <div class="admin-panel">
+        <div class="panel-header">
+          <div class="panel-title-wrap">
+            <h3>Fulfillment &amp; Client Orders Roster</h3>
+            <p class="panel-subtitle">WHITE-GLOVE DISPATCH TRACKING &bull; REAL-TIME STATUS SWITCHER</p>
+          </div>
+        </div>
+
+        <div class="table-responsive-wrapper">
+          <table class="admin-data-table">
+            <thead>
+              <tr>
+                <th>ORDER ID</th>
+                <th>PATRON</th>
+                <th>ITEMS ALLOCATED</th>
+                <th>AMOUNT</th>
+                <th>DESTINATION</th>
+                <th>FULFILLMENT STATUS</th>
+                <th>TIMESTAMP</th>
+              </tr>
+            </thead>
+            <tbody id="orders-table-body">
+              <!-- Populated dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: STAFF ATTENDANCE REGISTER -->
+    <section id="tab-attendance" class="admin-tab-pane">
+      <div class="admin-panel">
+        <div class="panel-header">
+          <div class="panel-title-wrap">
+            <h3>Atelier Staff Daily Attendance Register</h3>
+            <p class="panel-subtitle">CLICK P (PRESENT), L (LATE), OR A (ABSENT) TO LOG ATTENDANCE</p>
+          </div>
+        </div>
+
+        <div class="table-responsive-wrapper">
+          <table class="admin-data-table">
+            <thead>
+              <tr>
+                <th>PERSONNEL</th>
+                <th>DIVISION</th>
+                <th>STATUS</th>
+                <th>PUNCH IN</th>
+                <th>PUNCH OUT</th>
+                <th>QUICK TOGGLE</th>
+              </tr>
+            </thead>
+            <tbody id="attendance-table-body">
+              <!-- Populated dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: STAFF PAYROLL & SALARIES -->
+    <section id="tab-payroll" class="admin-tab-pane">
+      <div class="admin-panel">
+        <div class="panel-header">
+          <div class="panel-title-wrap">
+            <h3>Staff Payroll &amp; Compensation Ledger</h3>
+            <p class="panel-subtitle">BASE SALARY, OVERTIME, TAX DEDUCTIONS &bull; NET MONTHLY PAYABLE</p>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <div class="font-mono" style="font-size: 0.8rem; color: var(--admin-text-secondary);">
+              <span>MONTHLY PAYROLL OUTFLOW:</span>
+              <strong id="total-payroll-outflow" style="color: #ffffff; margin-left: 0.4rem; font-size: 1rem;">₹0</strong>
+            </div>
+
+            <button type="button" class="btn-admin-primary font-mono" onclick="window.disbursePayroll()">
+              <span>DISBURSE PAYROLL VIA WIRE</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="table-responsive-wrapper">
+          <table class="admin-data-table">
+            <thead>
+              <tr>
+                <th>PERSONNEL</th>
+                <th>BASE MONTHLY PAY</th>
+                <th>OVERTIME / BONUS</th>
+                <th>TDS / DEDUCTIONS</th>
+                <th>NET PAYABLE</th>
+                <th>VOUCHER</th>
+              </tr>
+            </thead>
+            <tbody id="payroll-table-body">
+              <!-- Populated dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 6: FINANCIALS, TAXES & P&L STATEMENT -->
+    <section id="tab-finances" class="admin-tab-pane">
+      <div class="pnl-grid">
+        <!-- P&L Statement Panel -->
+        <div class="admin-panel">
+          <div class="panel-header">
+            <div class="panel-title-wrap">
+              <h3>Profit &amp; Loss (P&amp;L) Income Statement</h3>
+              <p class="panel-subtitle">FISCAL PERIOD // AUTUMN WINTER 2026</p>
+            </div>
+          </div>
+
+          <div class="pnl-statement-box font-mono">
+            <div class="pnl-row subtotal">
+              <span>( + ) GROSS CLIENT SALES</span>
+              <span id="pnl-gross-rev">$0.00</span>
+            </div>
+
+            <div class="pnl-row deduct">
+              <span>( - ) COST OF GOODS SOLD (FABRIC, HARDWARE, MILLING)</span>
+              <span id="pnl-cogs">-$0.00</span>
+            </div>
+
+            <div class="pnl-row subtotal" style="color: var(--admin-accent-gold);">
+              <span>= GROSS MARGIN (BEFORE OPEX)</span>
+              <span id="pnl-gross-profit">$0.00</span>
+            </div>
+
+            <div class="pnl-row deduct">
+              <span>( - ) OPERATING EXPENSES (STAFF PAYROLL + STUDIO LOGISTICS)</span>
+              <span id="pnl-opex">-$9,200.00</span>
+            </div>
+
+            <div class="pnl-row deduct">
+              <span>( - ) ESTIMATED NET APPAREL TAX LIABILITY</span>
+              <span id="tax-net-payable-row">18% Rate</span>
+            </div>
+
+            <div class="pnl-row total">
+              <span>= NET OPERATING PROFIT</span>
+              <span id="pnl-net-profit">$0.00</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tax Breakdown Card -->
+        <div class="tax-breakdown-card font-mono">
+          <div>
+            <h4 style="font-family: var(--font-display); font-size: 1.15rem; color: #ffffff;">Tax Liability Breakdown</h4>
+            <p style="font-size: 0.68rem; color: var(--admin-text-muted); margin-top: 0.2rem;">
+              GST / VAT REGIME COMPLIANCE &bull; HSN CODE 6109 / 6201
+            </p>
+          </div>
+
+          <div class="tax-item">
+            <span style="color: var(--admin-text-muted);">OUTPUT TAX (18% COLLECTED):</span>
+            <strong id="tax-gross-collected" style="color: #ffffff;">$0.00</strong>
+          </div>
+
+          <div class="tax-item">
+            <span style="color: var(--admin-text-muted);">INPUT TAX CREDIT (ITC APPLIED):</span>
+            <strong id="tax-input-credit" style="color: var(--admin-accent-emerald);">-$0.00</strong>
+          </div>
+
+          <div style="border-top: 1px solid var(--admin-border-subtle); padding-top: 0.75rem;" class="tax-item">
+            <span style="color: var(--admin-accent-gold); font-weight: 700;">NET TAX PAYABLE TO GOVT:</span>
+            <strong id="tax-net-payable" style="color: var(--admin-accent-gold); font-size: 1.1rem;">$0.00</strong>
+          </div>
+
+          <div style="background: rgba(255, 255, 255, 0.03); padding: 0.85rem; border-radius: var(--radius-xs); font-size: 0.7rem; color: var(--admin-text-muted); line-height: 1.6;">
+            <strong>COMPLIANCE STATUS:</strong> Validated for Q3 filing. Zero late penalties accrued. Direct e-invoice QR code generation enabled.
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Modal: Add Product to E-Commerce Catalog -->
+  <div id="add-product-modal" class="admin-modal-overlay">
+    <div class="admin-modal-box">
+      <button type="button" class="modal-close-x" onclick="window.closeAddProductModal()">&times;</button>
+      
+      <div style="margin-bottom: 1.25rem;">
+        <span class="admin-badge-erp font-mono">NEW APPAREL SKU</span>
+        <h3 style="font-family: var(--font-display); font-size: 1.35rem; color: #ffffff; margin-top: 0.35rem;">
+          Add Product to Catalog
+        </h3>
+        <p style="font-size: 0.72rem; color: var(--admin-text-muted); font-family: var(--font-mono);">
+          Instantly integrates into the client storefront.
+        </p>
+      </div>
+
+      <form id="add-product-form">
+        <div class="admin-form-group">
+          <label for="prod-title" class="admin-label">GARMENT TITLE</label>
+          <input type="text" id="prod-title" class="admin-input" placeholder="e.g. 600 GSM Mohair Oversized Cardigan" required>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="admin-form-group">
+            <label for="prod-category" class="admin-label">CATEGORY</label>
+            <select id="prod-category" class="admin-select">
+              <option value="sweats">Sweats &amp; Loungewear</option>
+              <option value="outerwear">Outerwear &amp; Coats</option>
+              <option value="tees">Tees &amp; Tops</option>
+              <option value="trousers">Trousers &amp; Tailoring</option>
+              <option value="footwear">Footwear</option>
+            </select>
+          </div>
+
+          <div class="admin-form-group">
+            <label for="prod-price" class="admin-label">RETAIL PRICE ($ USD)</label>
+            <input type="number" id="prod-price" class="admin-input" placeholder="380" required>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="admin-form-group">
+            <label for="prod-stock" class="admin-label">INITIAL STOCK UNITS</label>
+            <input type="number" id="prod-stock" class="admin-input" placeholder="25" required>
+          </div>
+
+          <div class="admin-form-group">
+            <label for="prod-cogs" class="admin-label">ESTIMATED COGS ($ USD)</label>
+            <input type="number" id="prod-cogs" class="admin-input" placeholder="110">
+          </div>
+        </div>
+
+        <div class="admin-form-group">
+          <label for="prod-img" class="admin-label">IMAGE PATH OR URL</label>
+          <input type="text" id="prod-img" class="admin-input" value="assets/images/garment-hoodie-oatmeal.jpg" placeholder="assets/images/...">
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+          <button type="button" class="btn-admin-secondary font-mono" onclick="window.closeAddProductModal()">CANCEL</button>
+          <button type="submit" class="btn-admin-primary font-mono">INTEGRATE SKU</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/admin-portal.js"></script>
+
+</body>
+</html>

@@ -926,11 +926,32 @@
     });
   }
 
+  const ORDERS_KEY = 'atelier_orders';
+  function recordOrderToERP(items, subtotal) {
+    try {
+      const existing = localStorage.getItem(ORDERS_KEY);
+      const orders = existing ? JSON.parse(existing) : [];
+      const newOrder = {
+        id: 'AO-' + Math.floor(1000 + Math.random() * 9000),
+        customer: 'Julian Vance',
+        email: 'j.vance@oberoigroup.com',
+        items: items.map(i => `${i.title} (${i.size}) x${i.quantity}`).join(', '),
+        total: subtotal,
+        destination: 'New Delhi, India',
+        status: 'processing',
+        date: 'Just now'
+      };
+      orders.unshift(newOrder);
+      localStorage.setItem(ORDERS_KEY, JSON.stringify(orders));
+    } catch (e) {}
+  }
+
   const btnCheckoutWA = document.getElementById('btn-checkout-wa');
   if (btnCheckoutWA) {
     btnCheckoutWA.addEventListener('click', () => {
       const orderSummary = cart.map(i => `• ${i.title} (${i.size}) x${i.quantity} = $${(i.price * i.quantity).toLocaleString('en-US')}`).join('\n');
       const subtotal = cart.reduce((acc, i) => acc + i.price * i.quantity, 0);
+      recordOrderToERP(cart, subtotal);
       const text = encodeURIComponent(
         `Hello Atelier Ora Concierge! I would like to order:\n\n${orderSummary}\n\nSubtotal: $${subtotal.toLocaleString('en-US')} USD\n\nPlease confirm delivery routing.`
       );

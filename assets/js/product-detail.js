@@ -723,6 +723,30 @@
   if (cartCloseBtn) cartCloseBtn.addEventListener('click', closeCart);
   if (cartOverlay) cartOverlay.addEventListener('click', closeCart);
 
+  const btnCheckout = document.getElementById('btn-checkout');
+  if (btnCheckout) {
+    btnCheckout.addEventListener('click', () => {
+      if (cart.length === 0) return;
+      const subtotal = cart.reduce((acc, i) => acc + i.price * i.quantity, 0);
+      try {
+        const existing = localStorage.getItem('atelier_orders');
+        const orders = existing ? JSON.parse(existing) : [];
+        const newOrder = {
+          id: 'AO-' + Math.floor(1000 + Math.random() * 9000),
+          customer: 'Julian Vance',
+          email: 'j.vance@oberoigroup.com',
+          items: cart.map(i => `${i.title} (${i.size}) x${i.quantity}`).join(', '),
+          total: subtotal,
+          destination: 'New Delhi, India',
+          status: 'processing',
+          date: 'Just now'
+        };
+        orders.unshift(newOrder);
+        localStorage.setItem('atelier_orders', JSON.stringify(orders));
+      } catch (e) {}
+    });
+  }
+
   // Parse ID from URL
   function initProduct() {
     const params = new URLSearchParams(window.location.search);
