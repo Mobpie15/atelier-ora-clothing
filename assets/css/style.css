@@ -1351,6 +1351,7 @@ button, input, select, textarea {
 }
 
 @media (max-width: 768px) {
+  .container { padding: 0 1rem !important; }
   .top-ticker { display: none; }
   .nav-links-group { display: none; }
   .mobile-nav-dock { display: flex; }
