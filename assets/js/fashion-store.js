@@ -260,6 +260,86 @@
         { label: 'ORIGIN', value: 'Civitanova Marche, Italy' }
       ],
       has3DPreview: false
+    },
+    {
+      id: 'dress-07',
+      title: 'Bias-Cut Pleated Silk Evening Maxi Dress',
+      category: 'dresses',
+      materialKey: 'silk',
+      material: '32 Momme Mulberry Silk',
+      price: 640,
+      weightGsm: 140,
+      image: 'assets/images/garment-dress-silk.jpg',
+      colorName: 'Obsidian Black Silk',
+      badge: 'HAUTE COUTURE // 32 MOMME SILK',
+      colors: [
+        { name: 'Obsidian Black Silk', hex: '#161618' },
+        { name: 'Travertine Champagne', hex: '#d9cdb8' }
+      ],
+      sizes: ['FR 36 / US 4', 'FR 38 / US 6', 'FR 40 / US 8', 'FR 42 / US 10'],
+      composition: '100% Mulberry Crepe de Chine Silk (32 Momme)',
+      provenance: 'Woven in Como, Italy. Hand-pleated and finished with rolled edges in Lyon, France.',
+      silhouette: 'High halter neckline with architectural micro-pleating through the bodice, cascading into an asymmetrical bias-cut handkerchief maxi hem with undulating fluid movement.',
+      occasion: 'Black-tie architectural galas, opera evenings, high-summer private receptions, and trans-seasonal couture styling.',
+      pairing: 'Styled in harmony with our Double-Breasted Wool Overcoat and Handcrafted Leather Derby.',
+      dispatchEstimate: 'Dispatched within 24 hours in archival garment box with acid-free tissue and scented cedar sachet.',
+      care: 'Specialist dry clean only. Cool reverse iron under silk press cloth.',
+      fitAdvice: 'Cut on the true 45-degree bias for a body-skimming contour. Order your standard French / US dress size.',
+      measurements: [
+        { size: 'FR 36 / US 4', chest: '33.0 in', length: '53.0 in', shoulder: '14.0 in', sleeve: 'Sleeveless' },
+        { size: 'FR 38 / US 6', chest: '35.0 in', length: '54.0 in', shoulder: '14.5 in', sleeve: 'Sleeveless' },
+        { size: 'FR 40 / US 8', chest: '37.0 in', length: '55.0 in', shoulder: '15.0 in', sleeve: 'Sleeveless' },
+        { size: 'FR 42 / US 10', chest: '39.0 in', length: '56.0 in', shoulder: '15.5 in', sleeve: 'Sleeveless' }
+      ],
+      specs: [
+        { label: 'SILK GRADE', value: 'Grade 6A 100% Mulberry Silk' },
+        { label: 'FABRIC DENSITY', value: '32 Momme Crepe de Chine' },
+        { label: 'HEM CONSTRUCTION', value: 'Hand-Rolled French Edge' },
+        { label: 'WEAVE PROVENANCE', value: 'Lake Como, Northern Italy' },
+        { label: 'PLEATING ATELIER', value: 'Lyon, France' },
+        { label: 'CLOSURE', value: 'Concealed Hand-Sewn Riri Zip' }
+      ],
+      has3DPreview: false
+    },
+    {
+      id: 'derby-08',
+      title: 'Hand-Welted Goodyear Leather Derby',
+      category: 'footwear',
+      materialKey: 'leather',
+      material: 'French Box Calf Leather',
+      price: 520,
+      weightGsm: 880,
+      image: 'assets/images/garment-derby-leather.jpg',
+      colorName: 'Polished Black Noir',
+      badge: 'GOODYEAR WELTED // DAINITE SOLE',
+      colors: [
+        { name: 'Polished Black Noir', hex: '#111112' },
+        { name: 'Espresso Patina', hex: '#2b211a' }
+      ],
+      sizes: ['EU 41 / US 8', 'EU 42 / US 9', 'EU 43 / US 10', 'EU 44 / US 11'],
+      composition: '100% French Box Calf Full-Grain Leather, Vegetable-Tanned Lining, British Studded Rubber Dainite Outsole',
+      provenance: 'Hand-lasted and Goodyear-welted in Northamptonshire, England.',
+      silhouette: 'Classic 5-eyelet plain-toe derby with 360-degree storm welt, double-stitched perimeter, custom brass-turned shoe tree, and high-density British studded rubber sole.',
+      occasion: 'All-weather formal occasions, architectural practice, international business, and sharp evening dining.',
+      pairing: 'Complements both the Wide-Leg Pleated Tailored Trouser and the Double-Breasted Wool Overcoat.',
+      dispatchEstimate: 'In stock. Includes handcrafted cedar shoe trees, cotton flannel dust covers, and spare waxed laces.',
+      care: 'Condition regularly with beeswax leather balm and buff with horsehair brush.',
+      fitAdvice: 'True to English dress shoe sizing (Medium F width). If between sizes, size down by half size.',
+      measurements: [
+        { size: 'EU 41 / US 8', insole: '26.8 cm', length: 'Medium E', shoulder: '-', sleeve: '-' },
+        { size: 'EU 42 / US 9', insole: '27.5 cm', length: 'Medium E', shoulder: '-', sleeve: '-' },
+        { size: 'EU 43 / US 10', insole: '28.2 cm', length: 'Medium E', shoulder: '-', sleeve: '-' },
+        { size: 'EU 44 / US 11', insole: '29.0 cm', length: 'Medium E', shoulder: '-', sleeve: '-' }
+      ],
+      specs: [
+        { label: 'UPPER LEATHER', value: 'French Full-Grain Box Calf' },
+        { label: 'CONSTRUCTION', value: '360° Goodyear Storm Welt' },
+        { label: 'OUTSOLE', value: 'British Studded Dainite Rubber' },
+        { label: 'ORIGIN', value: 'Northamptonshire, England' },
+        { label: 'HARDWARE', value: 'Solid Brass Last Turn' },
+        { label: 'RESOLABILITY', value: 'Unlimited Recrafting Life' }
+      ],
+      has3DPreview: false
     }
   ];
 

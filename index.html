@@ -300,7 +300,7 @@
        ========================================================================= -->
   <section id="collection" class="catalog-section">
     <div class="container">
-      <div class="section-kicker font-mono">02 // APPAREL CATALOG &bull; 6 CORE PIECES</div>
+      <div class="section-kicker font-mono">02 // APPAREL CATALOG &bull; 8 CORE PIECES</div>
 
       <div class="catalog-nav-filter">
         <div>
@@ -309,9 +309,10 @@
         </div>
 
         <div class="filter-pills-bar font-mono">
-          <button type="button" class="cat-filter-btn active" data-category="all">ALL PIECES (6)</button>
+          <button type="button" class="cat-filter-btn active" data-category="all">ALL PIECES (8)</button>
           <button type="button" class="cat-filter-btn" data-category="sweats">HOODIES &amp; SWEATS</button>
           <button type="button" class="cat-filter-btn" data-category="outerwear">OUTERWEAR</button>
+          <button type="button" class="cat-filter-btn" data-category="dresses">DRESSES &amp; GOWNS</button>
           <button type="button" class="cat-filter-btn" data-category="tees">TEES &amp; TOPS</button>
           <button type="button" class="cat-filter-btn" data-category="trousers">TROUSERS</button>
           <button type="button" class="cat-filter-btn" data-category="footwear">FOOTWEAR</button>
@@ -323,13 +324,15 @@
         <div class="faceted-filter-group">
           <label for="filter-material" class="faceted-label">MATERIAL PROVENANCE:</label>
           <select id="filter-material" class="faceted-select font-mono">
-            <option value="all">All Materials (6)</option>
+            <option value="all">All Materials (8)</option>
             <option value="fleece">500 GSM Loopback Fleece</option>
             <option value="canvas">Washed Cotton Canvas</option>
             <option value="wool">850 GSM Italian Virgin Wool</option>
+            <option value="silk">32 Momme Mulberry Silk</option>
             <option value="jersey">280 GSM Single Jersey</option>
             <option value="tropical">High-Twist Tropical Wool</option>
             <option value="suede">Italian Hydro Calf Suede</option>
+            <option value="leather">French Box Calf Leather</option>
           </select>
         </div>
 
@@ -354,7 +357,7 @@
         </div>
 
         <div class="faceted-results-count">
-          <span id="catalog-count-badge" class="count-pill">SHOWING 6 OF 6 PIECES</span>
+          <span id="catalog-count-badge" class="count-pill">SHOWING 8 OF 8 PIECES</span>
         </div>
       </div>
 
@@ -604,6 +607,90 @@
               <button type="button" class="btn-add-bag font-mono" onclick="addToCart('boots-06')">
                 <span>ADD TO BAG</span>
                 <span>$450</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 7: Silk Evening Maxi Dress -->
+        <div class="garment-card" data-id="dress-07" data-category="dresses" data-material="silk" data-price="640" data-weight="140">
+          <a href="product.html?id=dress-07" class="garment-img-frame" title="Click to view garment specifications">
+            <span class="garment-badge-pill font-mono">32 MOMME SILK</span>
+            <img src="assets/images/garment-dress-silk.jpg" alt="Bias-Cut Pleated Silk Evening Maxi Dress" loading="lazy">
+            <div class="garment-overlay-cue font-mono">
+              <span>VIEW FULL SPECS &amp; PROVENANCE</span>
+            </div>
+          </a>
+          <div class="garment-info-box">
+            <div>
+              <div class="card-top-meta font-mono">
+                <span class="caption-tag">COUTURE &bull; OBSIDIAN SILK</span>
+                <span class="card-spec-link" onclick="window.location.href='product.html?id=dress-07'">SPECS &plus;</span>
+              </div>
+              <h3 class="garment-title font-display" onclick="window.location.href='product.html?id=dress-07'">Pleated Silk Evening Maxi Dress</h3>
+              <p class="garment-summary">100% Grade 6A Mulberry silk crepe de chine with architectural micro-pleats and undulating bias hem.</p>
+              
+              <div class="card-quick-specs font-mono">
+                <span>32 MOMME SILK</span>
+                <span>&bull;</span>
+                <span>COMO, ITALY</span>
+              </div>
+            </div>
+            <div class="garment-buy-row">
+              <div class="size-selector-wrap font-mono">
+                <label for="size-dress-07">SIZE:</label>
+                <select id="size-dress-07" class="select-clean font-mono">
+                  <option value="FR 36 / US 4">FR 36 / US 4</option>
+                  <option value="FR 38 / US 6" selected>FR 38 / US 6</option>
+                  <option value="FR 40 / US 8">FR 40 / US 8</option>
+                  <option value="FR 42 / US 10">FR 42 / US 10</option>
+                </select>
+              </div>
+              <button type="button" class="btn-add-bag font-mono" onclick="addToCart('dress-07')">
+                <span>ADD TO BAG</span>
+                <span>$640</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 8: Leather Derby -->
+        <div class="garment-card" data-id="derby-08" data-category="footwear" data-material="leather" data-price="520" data-weight="880">
+          <a href="product.html?id=derby-08" class="garment-img-frame" title="Click to view garment specifications">
+            <span class="garment-badge-pill font-mono">GOODYEAR WELTED</span>
+            <img src="assets/images/garment-derby-leather.jpg" alt="Hand-Welted Goodyear Leather Derby" loading="lazy">
+            <div class="garment-overlay-cue font-mono">
+              <span>VIEW FULL SPECS &amp; PROVENANCE</span>
+            </div>
+          </a>
+          <div class="garment-info-box">
+            <div>
+              <div class="card-top-meta font-mono">
+                <span class="caption-tag">FOOTWEAR &bull; POLISHED NOIR</span>
+                <span class="card-spec-link" onclick="window.location.href='product.html?id=derby-08'">SPECS &plus;</span>
+              </div>
+              <h3 class="garment-title font-display" onclick="window.location.href='product.html?id=derby-08'">Hand-Welted Leather Derby</h3>
+              <p class="garment-summary">French box calf leather with 360-degree storm welt, Dainite studded rubber sole, and brass hardware.</p>
+              
+              <div class="card-quick-specs font-mono">
+                <span>FRENCH BOX CALF</span>
+                <span>&bull;</span>
+                <span>NORTHAMPTON, UK</span>
+              </div>
+            </div>
+            <div class="garment-buy-row">
+              <div class="size-selector-wrap font-mono">
+                <label for="size-derby-08">SIZE:</label>
+                <select id="size-derby-08" class="select-clean font-mono">
+                  <option value="EU 41 / US 8">EU 41 / US 8</option>
+                  <option value="EU 42 / US 9" selected>EU 42 / US 9</option>
+                  <option value="EU 43 / US 10">EU 43 / US 10</option>
+                  <option value="EU 44 / US 11">EU 44 / US 11</option>
+                </select>
+              </div>
+              <button type="button" class="btn-add-bag font-mono" onclick="addToCart('derby-08')">
+                <span>ADD TO BAG</span>
+                <span>$520</span>
               </button>
             </div>
           </div>
