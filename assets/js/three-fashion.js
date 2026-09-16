@@ -246,21 +246,25 @@
     const clientX = isTouch ? e.touches[0].clientX : e.clientX;
     const clientY = isTouch ? e.touches[0].clientY : e.clientY;
 
-    const deltaX = clientX - prevMouse.x;
-    const deltaY = clientY - prevMouse.y;
-
     if (isTouch && !isHorizontalDrag) {
       const totalDx = Math.abs(clientX - startTouch.x);
       const totalDy = Math.abs(clientY - startTouch.y);
 
-      if (totalDy > totalDx && totalDy > 10) {
+      // If user is scrolling vertically, immediately yield to native browser scroll
+      if (totalDy > 6 && totalDy >= totalDx) {
         isDragging = false;
         return;
       }
-      if (totalDx > totalDy && totalDx > 8) {
+      // If user clearly drags horizontally, engage 3D garment rotation
+      if (totalDx > 10 && totalDx > totalDy * 1.2) {
         isHorizontalDrag = true;
+      } else {
+        return; // Don't rotate until deliberate horizontal intent is confirmed
       }
     }
+
+    const deltaX = clientX - prevMouse.x;
+    const deltaY = clientY - prevMouse.y;
 
     targetRotationY += deltaX * 0.008;
     targetRotationX += deltaY * 0.005;
