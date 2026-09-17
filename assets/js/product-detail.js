@@ -707,6 +707,281 @@
         { label: 'RESOLABILITY', value: 'Unlimited Recrafting Life' }
       ],
       companionIds: ['trouser-05', 'trench-03', 'dress-07']
+    },
+
+    'scarf-09': {
+      id: 'scarf-09',
+      title: 'Brushed Cashmere Blanket Fringe Scarf',
+      category: 'Luxury Accessories',
+      categorySlug: 'accessories',
+      material: '460 GSM Mongolian Cashmere',
+      materialSlug: 'cashmere',
+      price: 280,
+      weightGsm: 460,
+      badge: 'PURE CASHMERE // 460 GSM',
+      summary: 'Spun from 100% Grade A Mongolian cashmere combed from free-roaming mountain goats. Ripple-brushed with natural dried teasel heads in Scotland to create an ethereal, lustrous water-drop sheen with tactile twisted fringing.',
+      colorways: [
+        {
+          name: 'Oatmeal Cream',
+          hex: '#cfc5b4',
+          flatlayImg: 'assets/images/garment-scarf-oatmeal.jpg',
+          colorKey: 'oatmeal'
+        },
+        {
+          name: 'Slate Aegean',
+          hex: '#506e8e',
+          flatlayImg: 'assets/images/garment-scarf-slate.jpg',
+          colorKey: 'slate'
+        }
+      ],
+      angles: [
+        {
+          key: 'flatlay',
+          label: 'STUDIO FLATLAY',
+          type: 'image',
+          desc: 'High-res studio flatlay with travertine stone background'
+        },
+        {
+          key: 'texture',
+          label: 'CASHMERE RIPPLE',
+          type: 'image',
+          src: 'assets/images/garment-scarf-texture.jpg',
+          desc: 'Macro closeup of teasel-brushed 460 GSM ripple water finish'
+        }
+      ],
+      sizes: [
+        { name: 'One Size (210cm x 75cm)', chest: '75 cm (30")', length: '210 cm (82")', fitNote: 'Oversized luxury blanket proportions' }
+      ],
+      measurementsTable: [
+        { size: 'One Size', chest: '75 cm (29.5 in)', length: '210 cm (82.7 in)', shoulder: '-', sleeve: '10 cm Fringe' }
+      ],
+      composition: '100% Grade A Mongolian Cashmere (460 GSM)',
+      provenance: 'Combed by nomadic herders in Inner Mongolia. Spun, woven, and ripple-brushed with organic teasels in Elgin, Scotland.',
+      silhouette: 'Generous architectural blanket scarf with hand-twisted fringed ends and whisper-soft brushed ripple fleece drape.',
+      occasion: 'Trans-seasonal layering, high-altitude travel, cool-weather architectural strolls, and evening warmth.',
+      pairing: 'Styled harmoniously over the Double-Breasted Wool Overcoat or Washed Canvas Flight Bomber.',
+      dispatchEstimate: 'In stock. Hand-wrapped in cedar tissue within our bespoke hard-shell luxury presentation box.',
+      care: 'Specialist dry clean or delicate hand wash with organic cashmere wash. Dry flat in shade.',
+      fitAdvice: 'Substantial 210cm length engineered for double wrap or loose architectural drape.',
+      specs: [
+        { label: 'CASHMERE GRADE', value: 'Grade A 100% White Mongolian Cashmere' },
+        { label: 'FINISH TECHNIQUE', value: 'Natural Teasel Ripple Brushed' },
+        { label: 'DIMENSIONS', value: '210 cm x 75 cm / 82" x 30"' },
+        { label: 'MILL ATELIER', value: 'Elgin, Highlands of Scotland' },
+        { label: 'WEIGHT DENSITY', value: '460 GSM Pure Cashmere' }
+      ],
+      companionIds: ['trench-03', 'bomber-02', 'hoodie-01']
+    },
+
+    'denim-10': {
+      id: 'denim-10',
+      title: '14.5oz Architectural Raw Selvedge Denim',
+      category: 'Tailoring & Denim',
+      categorySlug: 'trousers',
+      material: '14.5oz Okayama Selvedge Denim',
+      materialSlug: 'denim',
+      price: 340,
+      weightGsm: 490,
+      badge: 'RAW SELVEDGE // 14.5 OZ',
+      summary: 'Shuttle-loomed in Kojima, Okayama on vintage 1950s Toyoda looms using 100% Zimbabwe long-staple cotton. Engineered with a 3D curved leg pattern that stacks architecturally over boots, paired with custom blackened solid iron button hardware.',
+      colorways: [
+        {
+          name: 'Washed Obsidian',
+          hex: '#202022',
+          flatlayImg: 'assets/images/garment-denim-obsidian.jpg',
+          colorKey: 'obsidian'
+        },
+        {
+          name: 'Kurashiki Indigo',
+          hex: '#1b263b',
+          flatlayImg: 'assets/images/garment-denim-indigo.jpg',
+          colorKey: 'indigo'
+        }
+      ],
+      angles: [
+        {
+          key: 'flatlay',
+          label: 'STUDIO FLATLAY',
+          type: 'image',
+          desc: 'High-res studio flatlay with travertine stone background'
+        },
+        {
+          key: 'texture',
+          label: 'SELVEDGE TWILL',
+          type: 'image',
+          src: 'assets/images/garment-denim-texture.jpg',
+          desc: 'Macro texture of 14.5oz shuttle-loomed rigid cotton twill'
+        }
+      ],
+      sizes: [
+        { name: '30 (S)', chest: '30.5 in', length: '32.0 in', fitNote: 'True to size for 30" waist' },
+        { name: '32 (M)', chest: '32.5 in', length: '32.5 in', fitNote: 'Recommended standard fit' },
+        { name: '34 (L)', chest: '34.5 in', length: '33.0 in', fitNote: 'Relaxed waist ease' },
+        { name: '36 (XL)', chest: '36.5 in', length: '33.5 in', fitNote: 'Generous rise and thigh volume' }
+      ],
+      measurementsTable: [
+        { size: '30 (S)', waist: '30.5 in (77.5 cm)', rise: '11.5 in (29.2 cm)', inseam: '32.0 in (81.3 cm)', legOpening: '18.0 in (45.7 cm)' },
+        { size: '32 (M)', waist: '32.5 in (82.6 cm)', rise: '12.0 in (30.5 cm)', inseam: '32.5 in (82.6 cm)', legOpening: '18.5 in (47.0 cm)' },
+        { size: '34 (L)', waist: '34.5 in (87.6 cm)', rise: '12.5 in (31.8 cm)', inseam: '33.0 in (83.8 cm)', legOpening: '19.0 in (48.3 cm)' },
+        { size: '36 (XL)', waist: '36.5 in (92.7 cm)', rise: '13.0 in (33.0 cm)', inseam: '33.5 in (85.1 cm)', legOpening: '19.5 in (49.5 cm)' }
+      ],
+      composition: '100% Long-Staple Zimbabwe Cotton (14.5oz / 490 GSM), Solid Iron Button Fly',
+      provenance: 'Shuttle-loomed in Kojima, Kurashiki, Okayama Prefecture, Japan on vintage 1950s Toyoda shuttle looms.',
+      silhouette: 'Curved architectural 3D ergonomic cut with twisted side seams, custom front utility jet pockets, and clean pink selvedge ID at the outseam cuff.',
+      occasion: 'Everyday architectural uniform, studio design sessions, trans-seasonal rotation, and rugged high-fashion styling.',
+      pairing: 'Anchors perfectly with the 280 GSM Boxy Drop-Shoulder Tee and Hand-Burnished Suede Chelsea Boots.',
+      dispatchEstimate: 'Dispatches within 24 hours. Includes custom selvedge cotton tote and Japanese denim care guide.',
+      care: 'Soak inside out in cold water with low agitation. Hang dry in shade. Avoid machine tumble drying.',
+      fitAdvice: 'Mid-rise with articulated ergonomic leg. True to size; will conform and mold to patron anatomy over wears.',
+      specs: [
+        { label: 'DENIM WEIGHT', value: '14.5 oz / 490 GSM Rigid Selvedge' },
+        { label: 'LOOM SPEC', value: 'Vintage 1950s Toyoda Shuttle Loom' },
+        { label: 'COTTON YARN', value: '100% Zimbabwe Long-Staple Cotton' },
+        { label: 'ORIGIN', value: 'Kojima, Okayama Prefecture, Japan' },
+        { label: 'HARDWARE', value: 'Blackened Solid Iron Atelier Button Fly' },
+        { label: 'SELVEDGE ID', value: 'Signature Pink & White Ticking' }
+      ],
+      companionIds: ['tee-04', 'boots-06', 'knit-12']
+    },
+
+    'shirt-11': {
+      id: 'shirt-11',
+      title: 'Raw Silk Camp-Collar Boxy Overshirt',
+      category: 'Shirts & Tops',
+      categorySlug: 'tees',
+      material: '220 GSM Raw Silk Noil',
+      materialSlug: 'silk-noil',
+      price: 290,
+      weightGsm: 220,
+      badge: 'RAW SILK NOIL // 220 GSM',
+      summary: 'Crafted from textured, nubby Mulberry silk noil spun in Kyoto. Features a relaxed retro-modern camp collar, single chest patch pocket, French flat-felled seam construction, and genuine smoke mother-of-pearl buttons.',
+      colorways: [
+        {
+          name: 'Raw Silk Cream',
+          hex: '#fae8dc',
+          flatlayImg: 'assets/images/garment-shirt-silk.jpg',
+          colorKey: 'cream'
+        },
+        {
+          name: 'Charcoal Noir',
+          hex: '#3b3d40',
+          flatlayImg: 'assets/images/garment-shirt-charcoal.jpg',
+          colorKey: 'charcoal'
+        }
+      ],
+      angles: [
+        {
+          key: 'flatlay',
+          label: 'STUDIO FLATLAY',
+          type: 'image',
+          desc: 'High-res studio flatlay with travertine stone background'
+        },
+        {
+          key: 'texture',
+          label: 'SILK NOIL GRAIN',
+          type: 'image',
+          src: 'assets/images/garment-shirt-texture.jpg',
+          desc: 'Macro texture of 220 GSM nubby Mulberry silk noil slub weave'
+        }
+      ],
+      sizes: [
+        { name: 'S (US 36)', chest: '43.0 in', length: '27.0 in', fitNote: 'Relaxed airy drape' },
+        { name: 'M (US 38)', chest: '45.0 in', length: '28.0 in', fitNote: 'Standard architectural boxy cut' },
+        { name: 'L (US 40)', chest: '47.0 in', length: '29.0 in', fitNote: 'Ideal for layering over tees (Recommended)' },
+        { name: 'XL (US 42)', chest: '49.0 in', length: '30.0 in', fitNote: 'Max volume overshirt drape' }
+      ],
+      measurementsTable: [
+        { size: 'S (US 36)', chest: '43.0 in (109.2 cm)', length: '27.0 in (68.6 cm)', shoulder: '20.5 in (52.1 cm)', sleeve: '11.0 in (27.9 cm)' },
+        { size: 'M (US 38)', chest: '45.0 in (114.3 cm)', length: '28.0 in (71.1 cm)', shoulder: '21.5 in (54.6 cm)', sleeve: '11.5 in (29.2 cm)' },
+        { size: 'L (US 40)', chest: '47.0 in (119.4 cm)', length: '29.0 in (73.7 cm)', shoulder: '22.5 in (57.1 cm)', sleeve: '12.0 in (30.5 cm)' },
+        { size: 'XL (US 42)', chest: '49.0 in (124.5 cm)', length: '30.0 in (76.2 cm)', shoulder: '23.5 in (59.7 cm)', sleeve: '12.5 in (31.8 cm)' }
+      ],
+      composition: '100% Mulberry Silk Noil Raw Weave (220 GSM), Mother-of-Pearl Button Closures',
+      provenance: 'Spun from pure mulberry silk noil in Kyoto, Japan. Tailored with French flat-felled seams in Como, Italy.',
+      silhouette: 'Relaxed boxy silhouette with relaxed camp/cuban collar, cuffed elbow sleeves, hidden placket option, and curved architectural split hem.',
+      occasion: 'High-summer editorial styling, coastal evenings, gallery receptions, and lightweight trans-seasonal layering.',
+      pairing: 'Wears open over the 280 GSM Boxy Tee or closed with the Wide-Leg Pleated Tailored Trouser.',
+      dispatchEstimate: 'In stock. Dispatches in 24 hours in breathable organic cotton travel envelope.',
+      care: 'Hand wash cold or gentle machine silk cycle at 30°C. Dry flat in shade. Low steam iron on reverse.',
+      fitAdvice: 'Relaxed boxy chest drape. Select regular size for signature casual luxury volume.',
+      specs: [
+        { label: 'FABRIC YARN', value: '100% Mulberry Silk Noil Slub' },
+        { label: 'WEIGHT', value: '220 GSM Textured Breathable Silk' },
+        { label: 'COLLAR CUT', value: 'Cuban / Camp Architectural Open Collar' },
+        { label: 'BUTTONS', value: 'Hand-Cut Smoked Mother-of-Pearl' },
+        { label: 'SEAM FINISH', value: 'Single-Needle French Flat-Felled' },
+        { label: 'WEAVE ATELIER', value: 'Kyoto, Japan & Lake Como, Italy' }
+      ],
+      companionIds: ['tee-04', 'trouser-05', 'derby-08']
+    },
+
+    'knit-12': {
+      id: 'knit-12',
+      title: 'Heavyweight Shetland Wool Shooting Sweater',
+      category: 'Knitwear & Sweats',
+      categorySlug: 'sweats',
+      material: '680 GSM Shetland Wool Tweed',
+      materialSlug: 'tweed',
+      price: 460,
+      weightGsm: 680,
+      badge: 'SHETLAND TWEED // CALFSKIN PATCHES',
+      summary: 'Spun from dry, robust 100% Shetland wool knit in a broken-herringbone stitch. Features an asymmetrical full-grain Italian calfskin gun patch at the right shoulder, matched elbow patches, and heavy 2x2 ribbed collar and hem.',
+      colorways: [
+        {
+          name: 'Espresso Earth Tweed',
+          hex: '#48342e',
+          flatlayImg: 'assets/images/garment-knit-espresso.jpg',
+          colorKey: 'espresso'
+        },
+        {
+          name: 'Charcoal Heather Tweed',
+          hex: '#2f3235',
+          flatlayImg: 'assets/images/garment-knit-charcoal.jpg',
+          colorKey: 'charcoal'
+        }
+      ],
+      angles: [
+        {
+          key: 'flatlay',
+          label: 'STUDIO FLATLAY',
+          type: 'image',
+          desc: 'High-res studio flatlay with travertine stone background'
+        },
+        {
+          key: 'texture',
+          label: 'HERRINGBONE & CALFSKIN',
+          type: 'image',
+          src: 'assets/images/garment-knit-texture.jpg',
+          desc: 'Macro texture of 680 GSM Shetland herringbone knit and vegetable-tanned calfskin'
+        }
+      ],
+      sizes: [
+        { name: 'M (US 38)', chest: '44.0 in', length: '27.0 in', fitNote: 'Standard tailored fit' },
+        { name: 'L (US 40)', chest: '46.0 in', length: '28.0 in', fitNote: 'Ideal for layering (Recommended)' },
+        { name: 'XL (US 42)', chest: '48.0 in', length: '29.0 in', fitNote: 'Chunky oversized field fit' }
+      ],
+      measurementsTable: [
+        { size: 'M (US 38)', chest: '44.0 in (111.8 cm)', length: '27.0 in (68.6 cm)', shoulder: '21.0 in (53.3 cm)', sleeve: '25.0 in (63.5 cm)' },
+        { size: 'L (US 40)', chest: '46.0 in (116.8 cm)', length: '28.0 in (71.1 cm)', shoulder: '22.0 in (55.9 cm)', sleeve: '25.5 in (64.8 cm)' },
+        { size: 'XL (US 42)', chest: '48.0 in (121.9 cm)', length: '29.0 in (73.7 cm)', shoulder: '23.0 in (58.4 cm)', sleeve: '26.0 in (66.0 cm)' }
+      ],
+      composition: '100% Pure Virgin Shetland Wool (680 GSM) with Tuscan Vegetable-Tanned Calfskin Patches',
+      provenance: 'Yarn spun and knitted in the Scottish Highlands. Shoulder and elbow calfskin patches hand-stitched in Civitanova Marche, Italy.',
+      silhouette: 'Substantial chunky crewneck silhouette with reinforced asymmetrical calfskin gun patch at the right shoulder, matched elbow patches, and heavy 2x2 rib collar and cuffs.',
+      occasion: 'Winter field expeditions, Highland architecture retreats, cold-weather fireside evenings, and rustic luxury tailoring.',
+      pairing: 'Complements the 14.5oz Architectural Raw Selvedge Denim or Wide-Leg Tailored Trousers.',
+      dispatchEstimate: 'In stock. Hand-finished and dispatched within 24 hours with custom cedarwood moth-protection blocks.',
+      care: 'Hand wash cold using wool shampoo or specialist dry clean. Reshape damp and dry flat away from direct heat.',
+      fitAdvice: 'Substantial heavyweight fit with room for a collared shirt underneath. Choose your normal knitwear size.',
+      specs: [
+        { label: 'KNIT DENSITY', value: '680 GSM 5-Gauge Heavyweight' },
+        { label: 'YARN ORIGIN', value: '100% Shetland Isles Virgin Wool' },
+        { label: 'LEATHER ACCENTS', value: 'Full-Grain Tuscan Calfskin Patches' },
+        { label: 'WEAVE PATTERN', value: 'Subtle Broken Herringbone Check' },
+        { label: 'HAND FEEL', value: 'Dry, Robust, Extremely Insulative' },
+        { label: 'KNIT ATELIER', value: 'Highlands, Scotland & Marche, Italy' }
+      ],
+      companionIds: ['denim-10', 'trouser-05', 'boots-06']
     }
   };
 
