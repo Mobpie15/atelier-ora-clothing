@@ -77,6 +77,20 @@
           desc: 'Worn on model (6ft 1in / 185cm wearing Size L)'
         },
         {
+          key: 'editorial',
+          label: 'EDITORIAL STRIDE',
+          type: 'image',
+          src: 'assets/images/garment-hoodie-editorial-man.jpg',
+          desc: 'High-fashion editorial street lookbook'
+        },
+        {
+          key: 'back',
+          label: 'BACK SILHOUETTE',
+          type: 'image',
+          src: 'assets/images/garment-hoodie-back.jpg',
+          desc: 'Architectural back drape & seamless double hood'
+        },
+        {
           key: '3d',
           label: '360° 3D STUDIO',
           type: '3d',
@@ -165,6 +179,13 @@
           type: 'image',
           src: 'assets/images/garment-bomber-model.jpg',
           desc: 'Worn on model (6ft 0in / 183cm wearing Size L)'
+        },
+        {
+          key: 'editorial',
+          label: 'EDITORIAL STRIDE',
+          type: 'image',
+          src: 'assets/images/garment-bomber-editorial-man.jpg',
+          desc: 'High-fashion tailored street lookbook'
         },
         {
           key: 'back',
@@ -256,6 +277,13 @@
           desc: 'Worn on model (6ft 2in / 188cm wearing Size 50 / L)'
         },
         {
+          key: 'editorial',
+          label: 'EDITORIAL STRIDE',
+          type: 'image',
+          src: 'assets/images/garment-trench-editorial-man.jpg',
+          desc: 'High-fashion tailored overcoat lookbook'
+        },
+        {
           key: 'back',
           label: 'BACK VIEW',
           type: 'image',
@@ -337,6 +365,13 @@
           type: 'image',
           src: 'assets/images/garment-tee-model.jpg',
           desc: 'Worn on model (6ft 0in / 183cm wearing Size L)'
+        },
+        {
+          key: 'editorial',
+          label: 'EDITORIAL STRIDE',
+          type: 'image',
+          src: 'assets/images/garment-tee-editorial-man.jpg',
+          desc: 'High-fashion relaxed summer street lookbook'
         },
         {
           key: 'back',
@@ -427,6 +462,13 @@
           type: 'image',
           src: 'assets/images/garment-trouser-model.jpg',
           desc: 'Worn on model (6ft 1in / 185cm wearing Size 32)'
+        },
+        {
+          key: 'editorial',
+          label: 'EDITORIAL STRIDE',
+          type: 'image',
+          src: 'assets/images/garment-trouser-editorial-man.jpg',
+          desc: 'Styled editorial lookbook with deep pleats'
         },
         {
           key: 'texture',
@@ -1007,15 +1049,38 @@
       b.classList.toggle('active', i === idx);
     });
 
-    // If on flatlay view, update main image to the exact colorway flatlay
     const activeAngle = activeProduct.angles[activeAngleIndex];
-    if (activeAngle.key === 'flatlay') {
-      pdpMainImage.src = chosenColor.flatlayImg;
+
+    // If 3D is active, update 3D model color
+    if (activeAngle && activeAngle.type === '3d') {
+      if (window.update3DHoodieColor) window.update3DHoodieColor(chosenColor.colorKey);
+      if (window.set3DGarmentColor) window.set3DGarmentColor(chosenColor.colorKey);
+    } else {
+      // Photo mode: switch immediately to flatlay of this colorway so the user sees it in full detail!
+      activeAngleIndex = 0; // Flatlay
+      if (pdpMainImage && chosenColor.flatlayImg) {
+        pdpMainImage.classList.add('img-switching');
+        pdpMainImage.src = chosenColor.flatlayImg;
+        setTimeout(() => {
+          pdpMainImage.classList.remove('img-switching');
+        }, 120);
+      }
     }
 
-    // If 3D is active and product is hoodie, update 3D mesh color
-    if (activeProduct.id === 'hoodie-01' && window.update3DHoodieColor) {
-      window.update3DHoodieColor(chosenColor.colorKey);
+    // Always update 3D color hook in background for when user taps 3D
+    if (window.update3DHoodieColor) window.update3DHoodieColor(chosenColor.colorKey);
+    if (window.set3DGarmentColor) window.set3DGarmentColor(chosenColor.colorKey);
+
+    // Re-render angle thumbnails so the flatlay thumbnail preview updates to the new color!
+    renderAngles();
+
+    // Update CTA button labels and sticky mobile dock
+    if (pdpBtnAddBag) {
+      pdpBtnAddBag.setAttribute('data-color', chosenColor.name);
+    }
+    const stickyBtn = document.getElementById('pdp-mobile-quick-add-btn');
+    if (stickyBtn) {
+      stickyBtn.setAttribute('data-color', chosenColor.name);
     }
   }
 
@@ -1055,6 +1120,14 @@
     pdpAngleThumbnails.querySelectorAll('.pdp-thumb-card').forEach((c, i) => {
       c.classList.toggle('active', i === idx);
     });
+
+    if (pdpMainImage) {
+      pdpMainImage.classList.add('img-switching');
+      setTimeout(() => {
+        pdpMainImage.classList.remove('img-switching');
+      }, 120);
+    }
+
     updateMainStage();
   }
 
@@ -1186,13 +1259,14 @@
 
     let garmentModel = null;
     let garmentMaterial = null;
+    let targetColorKey = initialColorKey;
 
     const loader = new THREE.GLTFLoader();
     loader.load('assets/models/hoodie.glb', (gltf) => {
       garmentModel = gltf.scene;
 
       garmentMaterial = new THREE.MeshStandardMaterial({
-        color: colorHexMap[initialColorKey] || 0xD7D1C5,
+        color: colorHexMap[targetColorKey] || colorHexMap[initialColorKey] || 0xD7D1C5,
         roughness: 0.88,
         metalness: 0.04
       });
@@ -1217,9 +1291,11 @@
       garmentModel.position.z = -center.z * scale;
 
       scene.add(garmentModel);
+      threeLoaded = true;
     });
 
-    window.update3DHoodieColor = function (colorKey) {
+    window.update3DHoodieColor = window.set3DGarmentColor = function (colorKey) {
+      targetColorKey = colorKey;
       if (garmentMaterial && colorHexMap[colorKey]) {
         garmentMaterial.color.setHex(colorHexMap[colorKey]);
       }
