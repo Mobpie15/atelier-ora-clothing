@@ -239,8 +239,12 @@
         <div class="studio-config-panel">
           <div class="studio-panel-top">
             <span class="config-tag-badge font-mono">CUSTOM 3D PREVIEW</span>
-            <h3 class="config-garment-title font-display">500 GSM Heavyweight Boxy Hoodie</h3>
-            <span class="config-garment-price font-mono">$260 USD</span>
+            <div class="studio-model-tabs font-mono" role="tablist" aria-label="Choose 3D model">
+              <button type="button" class="model-tab-btn active" data-studio-model="hoodie" role="tab">HOODIE · $260</button>
+              <button type="button" class="model-tab-btn" data-studio-model="sneaker" role="tab">SNEAKER · $190</button>
+            </div>
+            <h3 class="config-garment-title font-display" id="studio-model-title">500 GSM Heavyweight Boxy Hoodie</h3>
+            <span class="config-garment-price font-mono" id="studio-model-price">$260 USD</span>
 
             <!-- Color Swatches -->
             <div class="config-swatch-row font-mono">
@@ -248,7 +252,7 @@
                 <span>SELECT FABRIC COLOR:</span>
                 <span id="active-swatch-name" style="font-weight: 700; color: #1a1917;">OATMEAL</span>
               </div>
-              <div class="swatch-buttons-wrap">
+              <div class="swatch-buttons-wrap" id="studio-swatches">
                 <button type="button" class="color-swatch-btn swatch-oatmeal active" data-color="oatmeal" title="Oatmeal Heather"></button>
                 <button type="button" class="color-swatch-btn swatch-olive" data-color="olive" title="Vintage Olive"></button>
                 <button type="button" class="color-swatch-btn swatch-espresso" data-color="espresso" title="Deep Espresso Noir"></button>
@@ -283,7 +287,7 @@
             </div>
 
             <button type="button" id="btn-add-3d-garment" class="btn-add-3d-cart" data-color="oatmeal" onclick="addConfigured3DGarment()">
-              <span>ADD CONFIGURED 3D GARMENT &bull; $260</span>
+              <span id="studio-cta-label">ADD CONFIGURED 3D GARMENT &bull; $260</span>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <line x1="7" y1="17" x2="17" y2="7"></line>
                 <polyline points="7 7 17 7 17 17"></polyline>

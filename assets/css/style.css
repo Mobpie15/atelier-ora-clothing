@@ -549,6 +549,31 @@ button, input, select, textarea {
 .swatch-terracotta { background: #a05943; }
 .swatch-camel { background: #b9966f; }
 
+.studio-model-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0.7rem 0 0.2rem;
+}
+.model-tab-btn {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  color: var(--text-muted);
+  padding: 0.55rem 0.5rem;
+  border-radius: var(--radius-xs);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.model-tab-btn:hover { border-color: var(--text-pure); color: var(--text-pure); }
+.model-tab-btn.active {
+  background: var(--text-pure);
+  color: #ffffff;
+  border-color: var(--text-pure);
+}
+
 .studio-controls-toggles {
   display: flex;
   align-items: center;

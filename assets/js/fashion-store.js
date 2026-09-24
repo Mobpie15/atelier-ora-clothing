@@ -683,32 +683,25 @@
     openCart();
   };
 
-  // Add Configured 3D Garment from 3D Studio
+  // Add Configured 3D Garment from 3D Studio (reads live studio selection)
   window.addConfigured3DGarment = function () {
+    const studio = window.__studioModel || { id: 'hoodie', title: '500 GSM Heavyweight Boxy Hoodie', price: 260, image: 'assets/images/garment-hoodie-oatmeal.jpg', colorId: 'oatmeal', colorLabels: { oatmeal: 'Oatmeal Heather' } };
     const ctaBtn = document.getElementById('btn-add-3d-garment');
-    const color = (ctaBtn ? ctaBtn.getAttribute('data-color') : 'oatmeal') || 'oatmeal';
+    const color = (ctaBtn ? ctaBtn.getAttribute('data-color') : studio.colorId) || studio.colorId;
     const sizeSelect = document.getElementById('select-3d-size');
-    const chosenSize = sizeSelect ? sizeSelect.value : 'L (US 40)';
+    const chosenSize = sizeSelect && sizeSelect.value ? sizeSelect.value : 'L (US 40)';
 
-    const colorLabels = {
-      oatmeal: 'Oatmeal Heather',
-      olive: 'Vintage Washed Olive',
-      espresso: 'Deep Espresso Noir',
-      terracotta: 'Terracotta Clay',
-      camel: 'Warm Camel Wool'
-    };
-
-    const configId = `3d-hoodie-${color}`;
+    const configId = `3d-${studio.id}-${color}`;
     const existing = cart.find(item => item.id === configId && item.size === chosenSize);
     if (existing) {
       existing.quantity += 1;
     } else {
       cart.push({
         id: configId,
-        title: `3D Custom 500 GSM Hoodie (${colorLabels[color] || color})`,
-        price: 260,
-        image: 'assets/images/garment-hoodie-oatmeal.jpg',
-        colorName: colorLabels[color] || color,
+        title: `3D Custom ${studio.title} (${(studio.colorLabels || {})[color] || color})`,
+        price: studio.price,
+        image: studio.image,
+        colorName: (studio.colorLabels || {})[color] || color,
         size: chosenSize,
         quantity: 1
       });

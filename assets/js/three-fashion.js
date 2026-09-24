@@ -147,20 +147,54 @@
   if (shadowMesh) scene.add(shadowMesh);
 
   // -------------------------------------------------------------
-  // 3. COLOR SWATCHES & LUXURY FABRIC MATERIAL
+  // 3. MODEL CATALOG — one studio, many garments.
+  //    recolor: single fabric material tinted per swatch (hoodie).
+  //    variants: factory colorways baked in the GLB (KHR_materials_variants
+  //    parsed manually — the bundled r128 loader predates that extension).
   // -------------------------------------------------------------
-  const SWATCH_COLORS = {
-    oatmeal: 0xd0c7b5,
-    olive: 0x525642,
-    espresso: 0x1f1d1b,
-    terracotta: 0x94503c,
-    camel: 0xad8b65
+  const MODELS = {
+    hoodie: {
+      file: 'assets/models/hoodie.glb',
+      title: '500 GSM Heavyweight Boxy Hoodie',
+      price: 260,
+      image: 'assets/images/garment-hoodie-oatmeal.jpg',
+      mode: 'recolor',
+      normSize: 3.8, yOff: 0.15, camZ: 5.2,
+      swatches: [
+        { id: 'oatmeal', label: 'Oatmeal Heather', hex: 0xd0c7b5, css: '#ded8cb' },
+        { id: 'olive', label: 'Vintage Washed Olive', hex: 0x525642, css: '#5a5e48' },
+        { id: 'espresso', label: 'Deep Espresso Noir', hex: 0x1f1d1b, css: '#272422' },
+        { id: 'terracotta', label: 'Terracotta Clay', hex: 0x94503c, css: '#a05943' },
+        { id: 'camel', label: 'Warm Camel', hex: 0xad8b65, css: '#b9966f' }
+      ],
+      colorLabels: {
+        oatmeal: 'Oatmeal Heather', olive: 'Vintage Washed Olive',
+        espresso: 'Deep Espresso Noir', terracotta: 'Terracotta Clay', camel: 'Warm Camel Wool'
+      },
+      sizes: ['S (US 36)', 'M (US 38)', 'L (US 40)', 'XL (US 42)']
+    },
+    sneaker: {
+      file: 'assets/models/sneaker.glb',
+      title: 'Court Sneaker · Full-Grain',
+      price: 190,
+      image: 'assets/images/garment-boots-model.jpg',
+      mode: 'variants',
+      normSize: 3.1, yOff: -0.1, camZ: 4.6,
+      swatches: [
+        { id: 'midnight', label: 'Midnight Knit', css: '#245a7d' },
+        { id: 'beach', label: 'Beach Sand', css: '#d8c49a' },
+        { id: 'street', label: 'Street Grey', css: '#6b6f75' }
+      ],
+      colorLabels: { midnight: 'Midnight Knit', beach: 'Beach Sand', street: 'Street Grey' },
+      sizes: ['UK 6', 'UK 7', 'UK 8', 'UK 9', 'UK 10', 'UK 11']
+    }
   };
 
-  let currentColorHex = SWATCH_COLORS.oatmeal;
+  let currentModelId = 'hoodie';
+  let currentColorId = 'oatmeal';
 
   const fabricMaterial = new THREE.MeshStandardMaterial({
-    color: currentColorHex,
+    color: MODELS.hoodie.swatches[0].hex,
     roughness: 0.86,
     metalness: 0.02,
     bumpMap: fabricBumpTex,
@@ -169,52 +203,150 @@
   });
 
   // -------------------------------------------------------------
-  // 4. LOAD AUTHENTIC 3D HOODIE MODEL (GLTF)
+  // 4. GENERIC GARMENT LOADER (auto-center + normalize + material mode)
   // -------------------------------------------------------------
   const garmentGroup = new THREE.Group();
   scene.add(garmentGroup);
 
-  let hoodieLoaded = false;
-  const hoodieMeshes = [];
-
+  let garmentMeshes = [];
+  let variantMaps = []; // [{material, texture}] for mode:'variants'
   const loader = new THREE.GLTFLoader();
-  loader.load(
-    'assets/models/hoodie.glb',
-    function (gltf) {
-      const model = gltf.scene;
 
-      // Auto-center and normalize size
-      const box = new THREE.Box3().setFromObject(model);
-      const center = box.getCenter(new THREE.Vector3());
-      const size = box.getSize(new THREE.Vector3());
-      const maxDim = Math.max(size.x, size.y, size.z);
-      const scale = 3.8 / maxDim;
+  function clearGarment() {
+    garmentGroup.traverse(function (child) {
+      if (child.isMesh) {
+        if (child.geometry) child.geometry.dispose();
+      }
+    });
+    while (garmentGroup.children.length) garmentGroup.remove(garmentGroup.children[0]);
+    garmentMeshes = [];
+    variantMaps = [];
+  }
 
-      model.scale.setScalar(scale);
-      model.position.x = -center.x * scale;
-      model.position.y = -center.y * scale + 0.15;
-      model.position.z = -center.z * scale;
+  function placeModel(model, cfg) {
+    const box = new THREE.Box3().setFromObject(model);
+    const center = box.getCenter(new THREE.Vector3());
+    const size = box.getSize(new THREE.Vector3());
+    const scale = cfg.normSize / Math.max(size.x, size.y, size.z);
+    model.scale.setScalar(scale);
+    model.position.x = -center.x * scale;
+    model.position.y = -center.y * scale + cfg.yOff;
+    model.position.z = -center.z * scale;
+    garmentGroup.add(model);
+    camera.position.z = cfg.camZ;
+    camera.updateProjectionMatrix();
+  }
 
-      model.traverse(function (child) {
-        if (child.isMesh) {
-          child.material = fabricMaterial;
-          child.castShadow = true;
-          child.receiveShadow = true;
-          hoodieMeshes.push(child);
+  /** Read KHR_materials_variants mapping + diffuse textures straight from the
+   *  GLB bytes (no decoder upgrade needed on this old loader). */
+  function parseVariantMaps(arrayBuffer) {
+    const maps = [];
+    try {
+      const dv = new DataView(arrayBuffer);
+      const jsonLen = dv.getUint32(12, true);
+      const json = JSON.parse(new TextDecoder().decode(new Uint8Array(arrayBuffer, 20, jsonLen)));
+      const variants = (((json.extensions || {}).KHR_materials_variants || {}).variants || []).map(function (v) { return v.name; });
+      if (!variants.length) return maps;
+      const mesh = (json.meshes || [])[0];
+      const mappings = ((((mesh.primitives || [])[0].extensions || {}).KHR_materials_variants || {}).mappings || []);
+      const texForMaterial = function (mi) {
+        const m = (json.materials || [])[mi] || {};
+        const bct = (m.pbrMetallicRoughness || {}).baseColorTexture || {};
+        const t = (json.textures || [])[bct.index === undefined ? -1 : bct.index] || {};
+        if (t.source !== undefined) return t.source;
+        const ext = t.extensions || {};
+        if (ext.EXT_texture_webp && ext.EXT_texture_webp.source !== undefined) return ext.EXT_texture_webp.source;
+        if (ext.KHR_texture_basisu && ext.KHR_texture_basisu.source !== undefined) return ext.KHR_texture_basisu.source;
+        return -1;
+      };
+      const imageBytes = function (ii) {
+        const img = (json.images || [])[ii] || {};
+        const bv = (json.bufferViews || [])[img.bufferView || 0] || {};
+        const start = 12 + 8 + jsonLen + (bv.byteOffset || 0);
+        // NOTE: assumes single BIN chunk at file offset (standard .glb)
+        const binStart = 20 + jsonLen + 8;
+        return { bytes: arrayBuffer.slice(binStart + (bv.byteOffset || 0), binStart + (bv.byteOffset || 0) + (bv.byteLength || 0)), mime: img.mimeType || 'image/png' };
+      };
+      mappings.forEach(function (mp) {
+        (mp.variants || []).forEach(function (vi) {
+          maps.push({ variant: variants[vi] || ('v' + vi), image: texForMaterial(mp.material) });
+        });
+      });
+      maps._blobs = {};
+      maps.forEach(function (mp) {
+        if (mp.image >= 0 && !maps._blobs[mp.image]) {
+          const b = imageBytes(mp.image);
+          maps._blobs[mp.image] = URL.createObjectURL(new Blob([b.bytes], { type: b.mime }));
         }
       });
-
-      garmentGroup.add(model);
-      hoodieLoaded = true;
-
-      const badge = container.querySelector('.loading-model-chip');
-      if (badge) badge.remove();
-    },
-    undefined,
-    function (error) {
-      console.warn('GLTF load failed:', error);
+    } catch (e) {
+      console.warn('variant parse failed:', e);
     }
-  );
+    return maps;
+  }
+
+  function applyVariant(variantId) {
+    const cfg = MODELS[currentModelId];
+    const hit = variantMaps.filter(function (m) { return m.variant === variantId; })[0];
+    if (!hit || hit.image === undefined || hit.image < 0) return;
+    const url = (variantMaps._blobs || {})[hit.image];
+    if (!url) return;
+    new THREE.TextureLoader().load(url, function (tex) {
+      tex.encoding = THREE.sRGBEncoding;
+      tex.flipY = false; // glTF UV convention (GLTFLoader does the same)
+      garmentMeshes.forEach(function (mesh) {
+        if (!mesh.userData.baseMat) mesh.userData.baseMat = mesh.material;
+        mesh.material = mesh.userData.baseMat.clone();
+        mesh.material.map = tex;
+        mesh.material.needsUpdate = true;
+      });
+    });
+  }
+
+  let loadGen = 0;
+  let modelReady = false;
+  let pendingColor = null;
+
+  function loadModel(id) {
+    const cfg = MODELS[id];
+    if (!cfg) return;
+    const gen = ++loadGen;
+    modelReady = false;
+    pendingColor = null;
+    currentModelId = id;
+    clearGarment();
+    targetRotationY = 0;
+    targetRotationX = 0;
+    fetch(cfg.file).then(function (r) { return r.arrayBuffer(); }).then(function (buf) {
+      if (gen !== loadGen) return; // superseded
+      if (cfg.mode === 'variants') variantMaps = parseVariantMaps(buf);
+      loader.parse(buf, '', function (gltf) {
+        if (gen !== loadGen) return; // user switched mid-load
+        const model = gltf.scene;
+        model.traverse(function (child) {
+          if (child.isMesh) {
+            if (cfg.mode === 'recolor') child.material = fabricMaterial;
+            child.castShadow = true;
+            child.receiveShadow = true;
+            garmentMeshes.push(child);
+          }
+        });
+        placeModel(model, cfg);
+        modelReady = true;
+        const badge = container.querySelector('.loading-model-chip');
+        if (badge) badge.remove();
+        if (pendingColor) {
+          const c = pendingColor;
+          pendingColor = null;
+          setColor(c);
+        }
+      }, function (error) {
+        console.warn('GLTF load failed:', error);
+      });
+    }).catch(function (e) {
+      console.warn('model fetch failed:', e);
+    });
+  }
 
   // -------------------------------------------------------------
   // 5. INTERACTION: 360 ORBIT, MOBILE TOUCH, SWATCHES & WIND
@@ -285,36 +417,92 @@
   window.addEventListener('touchmove', onPointerMove, { passive: true });
   window.addEventListener('touchend', onPointerUp, { passive: true });
 
-  // Color Swatch Selection
-  const swatchButtons = document.querySelectorAll('.color-swatch-btn');
+  // ---- Studio UI: swatches + model tabs (rebuilt per garment) ----
   const activeColorLabel = document.getElementById('active-swatch-name');
 
   function setColor(colorName) {
-    if (SWATCH_COLORS[colorName]) {
-      currentColorHex = SWATCH_COLORS[colorName];
-      fabricMaterial.color.setHex(currentColorHex);
-
-      swatchButtons.forEach(b => {
-        b.classList.toggle('active', b.getAttribute('data-color') === colorName);
-      });
-
-      if (activeColorLabel) {
-        activeColorLabel.textContent = colorName.toUpperCase();
-      }
-
-      const ctaBtn = document.getElementById('btn-add-3d-garment');
-      if (ctaBtn) {
-        ctaBtn.setAttribute('data-color', colorName);
-      }
+    const cfg = MODELS[currentModelId];
+    const sw = cfg.swatches.filter(function (s) { return s.id === colorName; })[0];
+    if (!sw) return;
+    currentColorId = colorName;
+    if (!modelReady) {
+      // model still loading: remember, apply the moment it lands
+      pendingColor = colorName;
+    } else if (cfg.mode === 'recolor') {
+      fabricMaterial.color.setHex(sw.hex);
+    } else {
+      applyVariant(colorName);
     }
+    document.querySelectorAll('.color-swatch-btn').forEach(function (b) {
+      b.classList.toggle('active', b.getAttribute('data-color') === colorName);
+    });
+    if (activeColorLabel) activeColorLabel.textContent = colorName.toUpperCase();
+    const ctaBtn = document.getElementById('btn-add-3d-garment');
+    if (ctaBtn) ctaBtn.setAttribute('data-color', colorName);
+    const ctaLabel = document.getElementById('studio-cta-label');
+    if (ctaLabel) ctaLabel.innerHTML = 'ADD CONFIGURED 3D GARMENT &bull; $' + cfg.price;
+    syncStudioModel();
   }
 
-  swatchButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const color = btn.getAttribute('data-color');
-      setColor(color);
+  function syncStudioModel() {
+    const cfg = MODELS[currentModelId];
+    window.__studioModel = {
+      id: currentModelId, title: cfg.title, price: cfg.price,
+      image: cfg.image, colorId: currentColorId,
+      colorLabels: cfg.colorLabels
+    };
+  }
+
+  function rebuildStudioUI() {
+    const cfg = MODELS[currentModelId];
+    const title = document.getElementById('studio-model-title');
+    if (title) title.textContent = cfg.title;
+    const price = document.getElementById('studio-model-price');
+    if (price) price.textContent = '$' + cfg.price + ' USD';
+    const wrap = document.getElementById('studio-swatches');
+    if (wrap) {
+      wrap.innerHTML = '';
+      cfg.swatches.forEach(function (sw, i) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'color-swatch-btn' + (i === 0 ? ' active' : '');
+        btn.setAttribute('data-color', sw.id);
+        btn.title = sw.label;
+        if (sw.css) btn.style.background = sw.css;
+        btn.addEventListener('click', function () { setColor(sw.id); });
+        wrap.appendChild(btn);
+      });
+    }
+    const sizeSel = document.getElementById('select-3d-size');
+    if (sizeSel) {
+      sizeSel.innerHTML = '';
+      cfg.sizes.forEach(function (s, i) {
+        const o = document.createElement('option');
+        o.value = s; o.textContent = s;
+        if (i === 0) o.selected = true;
+        sizeSel.appendChild(o);
+      });
+    }
+    document.querySelectorAll('.model-tab-btn').forEach(function (b) {
+      b.classList.toggle('active', b.getAttribute('data-studio-model') === currentModelId);
+    });
+    syncStudioModel();
+  }
+
+  document.querySelectorAll('.model-tab-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const id = btn.getAttribute('data-studio-model');
+      if (!id || id === currentModelId) return;
+      currentModelId = id;
+      currentColorId = MODELS[id].swatches[0].id;
+      if (MODELS[id].mode === 'recolor') fabricMaterial.color.setHex(MODELS[id].swatches[0].hex);
+      rebuildStudioUI();
+      loadModel(id);
+      setColor(currentColorId);
     });
   });
+
+  // NOTE: boot call lives at the end of this file (after rotation vars).
 
   // Wind Sway Toggle
   const windBtn = document.getElementById('btn-toggle-wind');
@@ -334,6 +522,9 @@
       isWireframeActive = !isWireframeActive;
       wireBtn.classList.toggle('active', isWireframeActive);
       fabricMaterial.wireframe = isWireframeActive;
+      garmentMeshes.forEach(function (mesh) {
+        if (mesh.material) mesh.material.wireframe = isWireframeActive;
+      });
       const span = wireBtn.querySelector('span');
       if (span) span.textContent = isWireframeActive ? 'CAD SEAMS: ON' : 'CAD SEAMS: OFF';
     });
@@ -345,7 +536,7 @@
     resetBtn.addEventListener('click', () => {
       targetRotationY = 0;
       targetRotationX = 0;
-      setColor('oatmeal');
+      setColor(MODELS[currentModelId].swatches[0].id);
     });
   }
 
@@ -394,4 +585,11 @@
 
   // Expose global helpers
   window.set3DGarmentColor = setColor;
+  window.__variantInfo = function () {
+    return { n: variantMaps.length, blobs: Object.keys(variantMaps._blobs || {}), first: variantMaps[0] || null, meshes: garmentMeshes.length };
+  };
+
+  // boot: hoodie first (same default as before)
+  rebuildStudioUI();
+  loadModel('hoodie');
 })();
